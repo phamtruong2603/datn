@@ -24,6 +24,15 @@ public class Room {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "status")
+    private boolean status;
+
+    @Column(name = "price")
+    private float price;
+
+    @Column(name = "max_user")
+    private  int max_user;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;

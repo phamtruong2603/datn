@@ -39,8 +39,8 @@ public class User {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "status")
-    private boolean status;
+    @Column(name = "password")
+    private String password;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")

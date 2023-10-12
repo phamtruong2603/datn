@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,15 +22,22 @@ public class Booking {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "price")
-    private float price;
-
     @Column(name = "rentalPeriod")
     private String rentalPeriod;
+
+    @Column(name = "count_user")
+    private int count_user;
+
+    @Column(name = "status")
+    private boolean status;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
     private Room room;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hotle_id")
+    private Hotel hotel;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "booking", fetch = FetchType.LAZY)
     private List<User> users;

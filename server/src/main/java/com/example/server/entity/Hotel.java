@@ -33,4 +33,10 @@ public class Hotel {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.LAZY)
     private List<Room> rooms;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.LAZY)
+    private List<Booking> bookings;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.LAZY)
+    private List<Bill> bills;
 }

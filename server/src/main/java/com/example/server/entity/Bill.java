@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "bills")
@@ -23,8 +22,8 @@ public class Bill {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "rental_period")
-    private Date rental_period;
+    @Column(name = "price")
+    private float price;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
@@ -34,6 +33,7 @@ public class Bill {
     @JoinColumn(name = "booking_id")
     private Booking booking;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bill", fetch = FetchType.LAZY)
-    private List<User> users;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "hotle_id")
+    private Hotel hotel;
 }
