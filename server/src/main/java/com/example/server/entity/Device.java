@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "device")
+@Table(name = "devices")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,9 +21,6 @@ public class Device {
 
     @Column(name = "name")
     private String name;
-
-    @Column(name = "description")
-    private String description;
 
     @ManyToMany(mappedBy = "devices")
     private List<Room> rooms;

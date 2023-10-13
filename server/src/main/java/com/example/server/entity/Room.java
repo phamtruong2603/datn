@@ -40,7 +40,7 @@ public class Room {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "room", fetch = FetchType.LAZY)
     private List<User> users;
 
-    @ManyToMany()
+    @ManyToMany
     @JoinTable(
             name = "room_device",
             joinColumns = @JoinColumn(name = "room_id"),
