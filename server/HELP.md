@@ -36,6 +36,8 @@ The following guides illustrate how to use some features concretely:
 or
 - [git clone git@github.com:phamtruong2603/datn.git]()
 
+### from project cd to server
+
 ### Copy file application-dev.properties to application.properties and add necessary information
 
 - [cp application-dev.properties application.properties]()
