@@ -49,4 +49,23 @@ public class HotelController {
             );
         }
     }
+
+    @GetMapping("/get-hotel/{id}")
+    public ResponseEntity<Response> getHotelById(@PathVariable Integer id) {
+        try {
+            Hotel hotel = hotelService.getHotelById(id);
+            if (hotel == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                        new Response("404", "not found", 1001, "")
+                );
+            }
+            return ResponseEntity.status(HttpStatus.OK).body(
+                    new Response("201", "success", 1000, hotel)
+            );
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                    new Response("500", "fail", 1001, "")
+            );
+        }
+    }
 }

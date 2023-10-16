@@ -16,13 +16,16 @@ public class HotelService {
 
     public Hotel createHotel(Hotel data) {
         Optional<Hotel> findHotel = hotelRepository.findByNameAndAddress(data.getName(), data.getAddress());
-        if (!findHotel.isEmpty()) {
-            return null;
-        }
+        if (findHotel.isPresent()) return null;
         return hotelRepository.save(data);
     }
 
     public List<Hotel> getAllHotel() {
         return hotelRepository.findAll();
+    }
+
+    public Hotel getHotelById(Integer id) {
+        Optional<Hotel> hotel = hotelRepository.findById(id);
+        return hotel.orElse(null);
     }
 }
