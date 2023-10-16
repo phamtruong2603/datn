@@ -39,6 +39,9 @@ public class User {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "password")
     private String password;
 
