@@ -15,7 +15,7 @@ import java.util.List;
 public class HotelController {
 
     @Autowired
-    HotelService hotelService;
+    private HotelService hotelService;
 
     @PostMapping("/create-hotel")
     public ResponseEntity<Response> createHotel(@RequestBody Hotel hotel){

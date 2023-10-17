@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RoomController {
 
     @Autowired
-    RoomService roomService;
+    private RoomService roomService;
 
     @PostMapping("/create-room")
     public ResponseEntity<Response> createRoom(@RequestBody Room room) {

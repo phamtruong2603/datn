@@ -12,7 +12,7 @@ import java.util.Optional;
 public class HotelService {
 
     @Autowired
-    HotelRepository hotelRepository;
+    private HotelRepository hotelRepository;
 
     public Hotel createHotel(Hotel data) {
         Optional<Hotel> findHotel = hotelRepository.findByNameAndAddress(data.getName(), data.getAddress());
