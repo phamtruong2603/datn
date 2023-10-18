@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "../components/Header/Header";
 import Siderbar from "../components/Siderbar/Siderbar";
 import Statistical from "./statistical/Statistical";
-import NotFound from "../components/NotFound";
+import RoomManagement from "./RoomManagement/RoomManagement";
 
 const Manager = () => {
   return (
@@ -13,7 +13,7 @@ const Manager = () => {
         <div className="content">
           <Routes>
             <Route path="/statistical" element={<Statistical />} />
-            <Route path="/*" element={<NotFound />} />
+            <Route path="/room-management" element={<RoomManagement />} />
           </Routes>
         </div>
       </div>

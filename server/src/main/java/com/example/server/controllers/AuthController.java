@@ -1,6 +1,7 @@
 package com.example.server.controllers;
 
 import com.example.server.dto.LoginDto;
+import com.example.server.dto.RegisterDto;
 import com.example.server.entity.User;
 import com.example.server.responses.Response;
 import com.example.server.services.UserService;
@@ -20,7 +21,7 @@ public class AuthController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<Response> register(@RequestBody User request) {
+    public ResponseEntity<Response> register(@RequestBody RegisterDto request) {
         try {
             User userSave = userService.saveUser(request);
             if(userSave == null) {

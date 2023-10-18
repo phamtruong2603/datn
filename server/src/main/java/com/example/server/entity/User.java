@@ -59,4 +59,16 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     private List<Notification> notifications;
+
+    public User(String avatar, String full_name, String mobile, String sex, String CMND, String role, String address, String email, String password) {
+        this.avatar = avatar;
+        this.full_name = full_name;
+        this.mobile = mobile;
+        this.sex = sex;
+        this.CMND = CMND;
+        this.role = role;
+        this.address = address;
+        this.email = email;
+        this.password = password;
+    }
 }

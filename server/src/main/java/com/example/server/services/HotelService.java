@@ -1,5 +1,6 @@
 package com.example.server.services;
 
+import com.example.server.dto.HotelRequestCreate;
 import com.example.server.entity.Hotel;
 import com.example.server.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +15,19 @@ public class HotelService {
     @Autowired
     private HotelRepository hotelRepository;
 
-    public Hotel createHotel(Hotel data) {
+    public Hotel createHotel(HotelRequestCreate data) {
         Optional<Hotel> findHotel = hotelRepository.findByNameAndAddress(data.getName(), data.getAddress());
         if (findHotel.isPresent()) return null;
-        return hotelRepository.save(data);
+        Hotel hotel = new Hotel(data.getName(), data.getStar(), data.getDescription(), data.getAddress());
+        hotelRepository.save(hotel);
+        return hotelRepository.save(hotel);
     }
 
     public List<Hotel> getAllHotel() {
         return hotelRepository.findAll();
     }
 
-    public Hotel getHotelById(Integer id) {
+    public Hotel getHotelById(int id) {
         Optional<Hotel> hotel = hotelRepository.findById(id);
         return hotel.orElse(null);
     }

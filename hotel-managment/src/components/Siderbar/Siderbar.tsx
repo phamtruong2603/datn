@@ -2,12 +2,15 @@ import React from 'react';
 import { Layout, Menu, theme } from 'antd';
 
 import { listSidebarAdmin } from '../../routes/adminRoute';
+import { listSidebarStaff } from '../../routes/manageRoute';
 import { MenuItem } from '../../types/MenuItem';
 import { useNavigate } from 'react-router-dom';
 
 const { Content, Sider } = Layout;
 
-const items: any = listSidebarAdmin.map((item: MenuItem) => {
+const list = true ? listSidebarStaff : listSidebarAdmin
+
+const items: any = list.map((item: MenuItem) => {
   return {
     key: item.key,
     // icon:
@@ -31,7 +34,7 @@ const Siderbar = () => {
 
   const findItem = ({ key }: { key: string }) => {
     const itemActive: MenuItem[] = []
-    for (const item of listSidebarAdmin) {
+    for (const item of list) {
       if (item.key === key) {
         itemActive.push(item)
       }

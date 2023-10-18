@@ -1,5 +1,6 @@
 package com.example.server.controllers;
 
+import com.example.server.dto.HotelRequestCreate;
 import com.example.server.entity.Hotel;
 import com.example.server.responses.Response;
 import com.example.server.services.HotelService;
@@ -18,9 +19,14 @@ public class HotelController {
     private HotelService hotelService;
 
     @PostMapping("/create-hotel")
-    public ResponseEntity<Response> createHotel(@RequestBody Hotel hotel){
+    public ResponseEntity<Response> createHotel(@RequestBody HotelRequestCreate data){
         try {
-            Hotel saveHotel = hotelService.createHotel(hotel);
+            if(data.getName() == null || data.getAddress() == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                        new Response("400", "Missing name or address in the request", 1001, "")
+                );
+            }
+            Hotel saveHotel = hotelService.createHotel(data);
             if (saveHotel == null){
                 return ResponseEntity.status(HttpStatus.CONFLICT).body(
                         new Response("409", "The hotel already exists", 1001, "")

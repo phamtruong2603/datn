@@ -39,4 +39,11 @@ public class Hotel {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.LAZY)
     private List<Bill> bills;
+
+    public Hotel(String name, float star, String description, String address) {
+        this.name = name;
+        this.star = star;
+        this.description = description;
+        this.address = address;
+    }
 }
