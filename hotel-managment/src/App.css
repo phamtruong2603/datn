@@ -8,3 +8,10 @@
     flex: 1;
     padding: 1rem;
 }
+
+.title-layout {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    color: rgb(82, 82, 82);
+}

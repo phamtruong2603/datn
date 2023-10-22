@@ -5,4 +5,6 @@ export interface Room {
     status: boolean | null;
     price: Number;
     max_user: Number
+    description?: string
+    hotel_id?: Number
 }

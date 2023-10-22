@@ -1,4 +1,4 @@
-import { Space, Table, Tag } from "antd";
+import { Button, Space, Table, Tag } from "antd";
 import { Room } from "../../types/room";
 import type { ColumnsType } from 'antd/es/table';
 import React from "react";
@@ -12,7 +12,6 @@ const columns: ColumnsType<Room> = [
         title: 'Mã Phòng',
         dataIndex: 'id',
         key: 'id',
-        render: (text) => <p>{text}</p>,
         align: 'center',
         className: ''
     },
@@ -57,12 +56,22 @@ const columns: ColumnsType<Room> = [
         align: 'center',
         className: ''
     },
+    {
+        title: "",
+        key: '',
+        dataIndex: '',
+        render: (_, record) => (<Button type="primary" ghost>Chi tiết</Button>),
+        align: 'center',
+        className: ''
+    }
 ];
+
 const TableRoom: React.FC<ITableRoom> = ({ dataSource }) => {
     return (
         <Table
             bordered={true}
             columns={columns} dataSource={dataSource}
+            pagination={false}
         />
     )
 }
