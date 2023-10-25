@@ -4,6 +4,10 @@
     width: 100wh;
 }
 
+.web {
+    width: 100wh;
+}
+
 .content {
     flex: 1;
     padding: 1rem;
@@ -14,4 +18,14 @@
     font-weight: 600;
     margin: 1rem 0;
     color: rgb(82, 82, 82);
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+a {
+    list-style: none;
+    text-decoration: none;
 }

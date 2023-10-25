@@ -1,8 +1,13 @@
-import React from 'react'
+import React from 'react';
+import Header from '../components/Header/Header';
+import Navbar from './Navbar/Navbar';
 
 const Web = () => {
   return (
-    <div>index</div>
+    <div className='web'>
+      <Header />
+      <Navbar />
+    </div>
   )
 }
 

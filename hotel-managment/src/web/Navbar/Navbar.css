@@ -1,0 +1,12 @@
+.navbar {
+    padding: 1rem 5rem;
+    background-color: rgb(61, 61, 242);
+    height: 35vh;
+}
+.nav-link a{
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid white;
+    margin: 1rem;
+    border-radius: 1rem;
+}

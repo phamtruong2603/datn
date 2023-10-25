@@ -1,5 +1,50 @@
 .header {
     height: 10vh;
-    border-bottom: 1px solid rgb(219, 218, 218);
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5rem;
+    background-color: rgb(61, 61, 242);
+    color: white;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.header-right {
+    display: flex;
+}
+
+.option_main,
+.auth {
+    display: flex;
+}
+
+.option_main>span,
+.auth>span {
+    margin: 0 1rem;
+    padding: 0rem 1rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.icon-language {
+    width: 2rem;
+    height: 2rem;
+}
+
+.icon-question {
+    width: 2rem;
+    height: 2rem;
+    filter: grayscale(0%);
+}
+
+.auth>span {
+    background-color: white;
+    border: 1px solid blue;
+    color: blue;
 }

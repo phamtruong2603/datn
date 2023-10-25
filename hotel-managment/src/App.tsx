@@ -1,22 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import ProtectedMain from './routes/ProtectedRoute';
 
 //import layout
-import NotFound from './components/NotFound';
 import Manager from './manager';
+import Web from './web';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route element={<ProtectedMain />}>
-          <Route path="main" element={<></>} />
-        </Route>
-        
-        <Route path="login" element={<></>} />
         <Route path="admin/*" element={<Manager />} />
-        <Route path="/*" element={<NotFound />} />
+        <Route path="/*" element={<Web />} />
       </Routes>
     </div>
   );
