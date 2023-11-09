@@ -1,0 +1,22 @@
+.Attractions>header {
+    height: 40vh;
+    background-color: rgb(61, 61, 242);
+    color: white;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.Attractions>header>div {
+    padding: 1rem 5rem;
+}
+
+.Attractions >header h1 {
+    padding: 1rem 0;
+    font-size: 3rem;
+}
+
+.input-search_Attractions {
+    height: 3.5rem;
+    border: 3px solid #febb02;
+    width: 47%;
+}

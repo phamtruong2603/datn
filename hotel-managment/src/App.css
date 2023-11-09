@@ -29,3 +29,7 @@ a {
     list-style: none;
     text-decoration: none;
 }
+
+.content-web {
+    padding: 1rem 5rem;
+}

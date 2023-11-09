@@ -1,7 +1,7 @@
 .navbar {
     padding: 1rem 5rem;
     background-color: rgb(61, 61, 242);
-    height: 35vh;
+    /* height: 35vh; */
 }
 .nav-link a{
     color: white;

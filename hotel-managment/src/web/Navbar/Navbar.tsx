@@ -8,7 +8,7 @@ const Navbar = () => {
       <nav className='nav-link'>
         <Link to={"/"}>Lưu trú</Link>
         <Link to={"/attractions"}>Địa điểm tham quan</Link>
-        <Link to={"/"}>Thông tin</Link>
+        <Link to={"/"}>Thuê xe</Link>
         <Link to={"/"}>Thông tin</Link>
         <Link to={"/about"}>Thông tin</Link>
       </nav>
