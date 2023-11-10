@@ -4,12 +4,14 @@ import './App.css';
 //import layout
 import Manager from './manager';
 import Web from './web';
+import Form from './FormLogin';
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="admin/*" element={<Manager />} />
+        <Route path="/login" element={<Form />} />
         <Route path="/*" element={<Web />} />
       </Routes>
     </div>

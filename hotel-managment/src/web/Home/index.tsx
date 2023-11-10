@@ -12,11 +12,13 @@ const Home = () => {
         <div className='Home'>
             <header>
                 <div>
-                    <h1>Tìm chỗ nghỉ tiếp theo</h1>
+                    <h1>Giới thiệu về khách sạn</h1>
                     <h3>Tìm ưu đãi khách sạn, chỗ nghỉ dạng nhà và nhiều hơn nữa...</h3>
+                    <br />
+                    <Button>{`Tìm Phòng -->`}</Button>
 
                     <div className='search'>
-                        <Input className='input-search' placeholder="Bạn muốn đến đâu???" prefix={<UserOutlined />} />
+                        <Input className='input-search' placeholder="Bạn muốn ở đâu???" prefix={<UserOutlined />} />
                         <RangePicker className='input-search' />
                         <Input className='input-search' placeholder="large size" prefix={<UserOutlined />} />
                         <Button className='button-search' type="primary">Tìm</Button>
@@ -26,23 +28,40 @@ const Home = () => {
 
             <div className='content-web'>
 
-                <div className='offers'>
-                    <div>
-                        <div>
-                            <div className='content_offers'>
-                                <h2>Đăng nhập để nhận ưu đãi</h2>
-                                <p>Giảm 10% các dịch vụ khi bạn đăng nhập</p>
-                            </div>
-                            {/* <img src="" alt="" /> */}
-                        </div>
-                        <Button type='primary'>Đăng nhập</Button>
+                {/* <div className='slide'>
+                    <img src="https://hoteliris.vn/media/1322/dl12.jpg" alt="" />
+                </div> */}
+
+                <div className='introduction'>
+                    <div className='column-introduction'>
+                        <p className='title'>Phòng trong khách sạn</p>
+                        <div><img src="https://www.hoteljob.vn/files/Anh-HTJ-Hong/mau-tam-trang%20tri-giuong-khach-san-dep-nhat-19.jpg" alt="" /></div>
+                        <p className='desc'>Phòng khách sạn, nơi bạn có thể tận hưởng sự thoải mái
+                            và tiện nghi sau một ngày dài khám phá. Thiết kế sang trọng, đầy đủ tiện
+                            lợi và dịch vụ chăm sóc khách hàng tận tâm, phòng khách sạn là điểm dừng
+                            lý tưởng cho những chuyến du lịch đáng nhớ.</p>
+                        <Button className='button'>Xem thêm</Button>
                     </div>
 
-                    <div>
-                        <div className='content_offers'>
-                            <h2>Đăng nhập để nhận ưu đãi</h2>
-                            <p>Giảm 10% các dịch vụ khi bạn đăng nhập</p>
-                        </div>
+                    <div className='column-introduction'>
+                        <p className='title'>Hệ thống nhà hàng</p>
+                        <div><img src="https://dhtgroup.vn/admin/webroot/upload/image/images/324506988_608070484460859_2948609452841327780_n.jpg" alt="" /></div>
+                        <p className='desc'>Hệ thống nhà hàng là một nền tảng hoặc mô hình kinh doanh quản
+                            lý nhiều nhà hàng từ một vị trí trung tâm. Nó cung cấp giải pháp tổ chức, quản lý
+                            đặt bàn, theo dõi kho, và các hoạt động khác liên quan đến quản lý nhà hàng. Hệ thống
+                            này thường bao gồm các tính năng như đặt chỗ trực tuyến, thanh toán điện tử, theo dõi
+                            doanh số bán hàng, và tối ưu hóa quy trình làm việc.</p>
+                        <Button className='button'>Xem thêm</Button>
+                    </div>
+
+                    <div className='column-introduction'>
+                        <p className='title'>Khu nghỉ dưỡng</p>
+                        <div><img src="https://www.hancorp.com.vn/wp-content/uploads/2021/10/thiet-ke-resort-11.jpg" alt="" /></div>
+                        <p className='desc'>Phòng khách sạn, nơi bạn có thể tận hưởng sự thoải mái
+                            và tiện nghi sau một ngày dài khám phá. Thiết kế sang trọng, đầy đủ tiện
+                            lợi và dịch vụ chăm sóc khách hàng tận tâm, phòng khách sạn là điểm dừng
+                            lý tưởng cho những chuyến du lịch đáng nhớ.</p>
+                        <Button className='button'>Xem thêm</Button>
                     </div>
                 </div>
 

@@ -1,0 +1,29 @@
+.Footer {
+    background-color: rgb(61, 61, 242);
+    padding: 1rem 5rem;
+}
+
+.general_information {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column-footer {
+    background-color: rgb(68, 68, 247);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.column-footer p {
+    color: white;
+}
+
+.column-footer .title {
+    font-weight: bold;
+}
+
+.version-web {
+    color: white;
+    text-align: center;
+    border-top: 1px solid white;
+}
