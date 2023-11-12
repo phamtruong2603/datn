@@ -1,8 +1,17 @@
 import './Header.css';
 import iconVN from '../../images/vietnam.png';
 import iconQuestion from '../../images/question.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+
+  const navigate = useNavigate()
+
+  const navigateLoginForm = (e: any) => {
+    e.preventDefault();
+    navigate('/login')
+};
+
   return (
     <div className='header'>
       <div className='logo'>Booking.vn</div>
@@ -14,8 +23,8 @@ const Header = () => {
         </div>
 
         <div className='auth'>
+          <span onClick={navigateLoginForm}>Đăng nhập</span>
           <span>Đăng ký</span>
-          <span>Đăng nhập</span>
         </div>
       </div>
     </div>

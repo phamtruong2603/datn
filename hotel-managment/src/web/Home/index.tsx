@@ -15,7 +15,7 @@ const Home = () => {
                     <h1>Giới thiệu về khách sạn</h1>
                     <h3>Tìm ưu đãi khách sạn, chỗ nghỉ dạng nhà và nhiều hơn nữa...</h3>
                     <br />
-                    <Button>{`Tìm Phòng -->`}</Button>
+                    <Button>{`Xem phòng -->`}</Button>
 
                     <div className='search'>
                         <Input className='input-search' placeholder="Bạn muốn ở đâu???" prefix={<UserOutlined />} />

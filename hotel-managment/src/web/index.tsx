@@ -1,10 +1,15 @@
 import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Navbar from './Navbar/Navbar';
+import OnTop from '../components/Floating/OnTop';
+import Chat from '../components/Floating/Chat';
 import Home from './Home';
 import Attractions from './Attractions/Attractions';
-import { Route, Routes } from 'react-router-dom';
+import Room from './Room/Room';
+import Detail from './Room/Detail';
 import Footer from '../components/Footer/Footer';
+import NavigateNotFound from '../components/NotFound/NavigateNotFound';
 
 const Web = () => {
   return (
@@ -14,7 +19,12 @@ const Web = () => {
       <Routes>
         <Route path="" element={<Home />} />
         <Route path="/attractions" element={<Attractions />} />
+        <Route path="/rooms" element={<Room />} />
+        <Route path="/rooms/:id" element={<Detail />} />
+        <Route path="/*" element={<NavigateNotFound />} />
       </Routes>
+      <OnTop />
+      <Chat />
       <Footer />
     </div>
   )

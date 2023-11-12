@@ -6,10 +6,10 @@ const Navbar = () => {
   return (
     <div className='navbar'>
       <nav className='nav-link'>
-        <Link to={"/"}>Lưu trú</Link>
+        <Link to={"/"}>Khách sạn</Link>
+        <Link to={"/rooms"}>Phòng thuê</Link>
         <Link to={"/attractions"}>Địa điểm tham quan</Link>
         <Link to={"/"}>Thuê xe</Link>
-        <Link to={"/"}>Thông tin</Link>
         <Link to={"/about"}>Thông tin</Link>
       </nav>
     </div>

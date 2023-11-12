@@ -4,7 +4,8 @@ import './App.css';
 //import layout
 import Manager from './manager';
 import Web from './web';
-import Form from './FormLogin';
+import Form from './components/FormLogin';
+import NotFound from './components/NotFound';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="admin/*" element={<Manager />} />
         <Route path="/login" element={<Form />} />
         <Route path="/*" element={<Web />} />
+        <Route path="/not-found" element={<NotFound />} />
       </Routes>
     </div>
   );

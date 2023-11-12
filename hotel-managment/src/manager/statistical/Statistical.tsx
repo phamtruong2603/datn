@@ -1,8 +1,12 @@
-import React from 'react'
+import React from 'react';
+import './Statistical.css'
+import Room from './Room';
 
 const Statistical = () => {
   return (
-    <div>aaa</div>
+    <div className='Statistical'>
+      <Room />
+    </div>
   )
 }
 

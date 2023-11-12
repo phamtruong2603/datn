@@ -1,0 +1,170 @@
+.content_room {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar-content_room {
+    width: 25%;
+}
+
+.list-content_room {
+    flex: 1;
+}
+
+/* Introduce------------------ */
+
+.Introduce {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1rem;
+    /* box-sizing: border-box; */
+    box-shadow: 0 4px 8px rgba(61, 61, 242, 0.3);
+}
+
+.content-Introduce {
+    padding: 0 1rem;
+}
+
+.discount-content-Introduce {
+    font-size: 0.8rem;
+    color: white;
+    background-color: green;
+    border-radius: 5px;
+    padding: 0.2rem;
+}
+
+.detail-content-Introduce {
+    font-size: 0.9rem;
+    border-left: 2px solid #e7e7e7;
+    padding-left: 1rem;
+}
+
+.detail-content-Introduce p {
+    margin: 0;
+}
+
+.detail-content-Introduce p:nth-child(1) {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.top-evaluate-Introduce {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+
+.top-evaluate-Introduce p {
+    margin: 0;
+}
+
+.top-evaluate-Introduce p:nth-child(2) {
+    font-size: 0.8rem;
+    color: rgb(100, 99, 99);
+}
+
+.top-evaluate-Introduce span {
+    padding: 0.6rem;
+    color: white;
+    background-color: rgb(61, 61, 242);
+    margin-left: 0.3rem;
+    border-radius: 10px 6px 10px 0;
+}
+
+.evaluate-Introduce,
+.img-Introduce {
+    width: 28%;
+}
+
+.img-Introduce {
+    height: 50%;
+}
+
+.evaluate-Introduce {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-evaluate-Introduce>p,
+.bottom-evaluate-Introduce>span {
+    margin: 0.5rem 0;
+    text-align: right;
+    display: block;
+}
+
+.bottom-evaluate-Introduce span:nth-child(1),
+.bottom-evaluate-Introduce p:nth-child(5) {
+    font-size: 0.8rem;
+}
+
+.bottom-evaluate-Introduce span:nth-child(2) {
+    font-size: 0.8rem;
+    /* text-decoration: line-through;
+    color: red; */
+}
+
+.bottom-evaluate-Introduce span:nth-child(3) {
+    font-size: 1.5rem;
+}
+
+.button-BEI,
+.discount-BEI {
+    display: flex;
+    justify-content: flex-end;
+    box-sizing: border-box;
+}
+
+.discount-BEI>span {
+    font-size: 0.8rem;
+    color: white;
+    background-color: green;
+    border-radius: 5px;
+    padding: 0.2rem;
+}
+
+/* ------------------------------------ */
+.reservation_information {
+    width: 35%;
+    box-sizing: border-box;
+}
+
+.name-reservation_information {
+    border: 1px solid rgb(224, 224, 224);
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.name-reservation_information h3 {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.evaluate-nameRI {
+    margin: 0.5rem 0;
+    
+}
+
+.sevice-nameRI {
+    display: flex;
+}
+
+.sevice-nameRI div,
+.evaluate-nameRI span{
+    margin-right: 0.5rem;
+    color: rgb(133, 132, 132);
+    font-size: 0.9rem;
+}
+.sevice-nameRI div {
+    width: 0,9rem;
+    height: 0.9rem;
+    box-sizing: border-box;
+}
+
+.evaluate-nameRI span:nth-child(1){
+    border-radius: 10px 6px 10px 0;
+    padding: 0.3rem;
+    color: white;
+    background-color: rgb(61, 61, 242);
+}

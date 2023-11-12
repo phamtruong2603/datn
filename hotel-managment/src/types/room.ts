@@ -1,5 +1,5 @@
 export interface Room {
-    key: Number;
+    key?: Number;
     id: Number;
     name: string;
     status: boolean | null;
@@ -7,4 +7,5 @@ export interface Room {
     max_user: Number
     description?: string
     hotel_id?: Number
+    img?: string
 }

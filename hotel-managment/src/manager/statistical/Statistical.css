@@ -1,0 +1,14 @@
+/* room------------ */
+.room {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    background-color: rgb(241, 241, 241);
+}
+.room .title {
+    width: 30%;
+    height: 50%;
+}
