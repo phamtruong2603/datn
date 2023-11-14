@@ -13,6 +13,11 @@
 
 /* Introduce------------------ */
 
+.Detail {
+    display: flex;
+    justify-content: space-between;
+}
+
 .Introduce {
     display: flex;
     justify-content: space-between;
@@ -130,10 +135,18 @@
     box-sizing: border-box;
 }
 
+.detail-reservation_information,
 .name-reservation_information {
     border: 1px solid rgb(224, 224, 224);
     padding: 1rem;
     border-radius: 1rem;
+    margin-bottom: 1rem;
+}
+
+.price-reservation_information {
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 1rem;
+    margin-bottom: 1rem;
 }
 
 .name-reservation_information h3 {
@@ -143,28 +156,176 @@
 
 .evaluate-nameRI {
     margin: 0.5rem 0;
-    
+
 }
 
 .sevice-nameRI {
     display: flex;
 }
 
-.sevice-nameRI div,
-.evaluate-nameRI span{
+.evaluate-nameRI span {
     margin-right: 0.5rem;
     color: rgb(133, 132, 132);
     font-size: 0.9rem;
 }
-.sevice-nameRI div {
-    width: 0,9rem;
-    height: 0.9rem;
-    box-sizing: border-box;
+
+.sevice-nameRI>div {
+    display: flex;
+    justify-content: flex-start;
+    margin-right: 0.5rem;
+    color: rgb(133, 132, 132);
+    font-size: 0.9rem;
+    margin-top: 1rem;
 }
 
-.evaluate-nameRI span:nth-child(1){
+.sevice-nameRI>div>div {
+    width: 1rem;
+    height: 1rem;
+}
+
+.evaluate-nameRI span:nth-child(1) {
     border-radius: 10px 6px 10px 0;
     padding: 0.3rem;
     color: white;
     background-color: rgb(61, 61, 242);
+}
+
+.detail-reservation_information h3 {
+    margin-bottom: 1rem;
+}
+
+.time_detail-DRI {
+    display: flex;
+    justify-content: space-between;
+}
+
+.time_detail-DRI>div>span {
+    display: block;
+}
+
+.time_detail-DRI>div>span:nth-child(2) {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.line-sevice-nameRI {
+    display: block;
+    height: 8rem;
+    width: 1px;
+    background-color: rgb(224, 224, 224);
+}
+
+.sum_time-DRI {
+    border-bottom: 1px solid rgb(224, 224, 224);
+    padding-bottom: 1rem;
+}
+
+.option-DRI {
+    margin-top: 1rem;
+}
+
+.option-DRI p,
+.sum_time-DRI p {
+    margin: 0;
+}
+
+.option-DRI p:nth-child(2),
+.sum_time-DRI p:nth-child(2) {
+    font-weight: bold;
+}
+
+.detail_price-PRI {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.4rem 0;
+    padding: 0 1rem;
+}
+
+.sum_price-PRI {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ebf3ff;
+    padding: 0 1rem;
+}
+
+.sum_price-PRI>span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.sum_price-PRI>div {
+    text-align: right;
+}
+
+.sum_price-PRI>div>span {
+    display: block;
+}
+
+.sum_price-PRI>div>span:nth-child(1) {
+    text-decoration: line-through;
+    color: red;
+}
+
+.sum_price-PRI>div>span:nth-child(2) {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.sum_price-PRI>div>span:nth-child(3) {
+    color: rgb(145, 145, 145);
+}
+
+.price-reservation_information >h3{
+    padding: 1rem;
+}
+
+.detail_discount-PRI {
+    padding: 1rem;
+}
+
+.detail_discount-PRI >h3{
+    padding-bottom: 1rem;
+}
+
+/* ---------------------------- */
+.customer_information {
+    border: 1px solid rgb(224, 224, 224);
+    padding: 1rem;
+    border-radius: 1rem;
+    flex: 1;
+    margin-left: 1rem;
+}
+
+/* -------------------- */
+
+.customer_information form {
+    border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.customer_information form>div {
+    margin: 1rem 0;
+}
+
+.customer_information form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.customer_information form input {
+    /* height: 2rem; */
+    width: 18rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(224, 224, 224);
+    outline: none;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.name {
+    display: flex;
+    justify-content: space-between;
 }

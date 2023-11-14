@@ -20,6 +20,7 @@ public class HotelController {
 
     @PostMapping("/create-hotel")
     public ResponseEntity<Response> createHotel(@RequestBody HotelRequestCreate data){
+        System.out.println(data);
         try {
             if(data.getName() == null || data.getAddress() == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(

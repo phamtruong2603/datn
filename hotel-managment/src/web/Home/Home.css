@@ -10,12 +10,13 @@
     padding: 1rem 5rem;
 }
 
-.popular_location h2, p{
+.popular_location>h2,
+.popular_location>p {
     margin: 1rem 0;
     color: rgb(62, 62, 62);
 }
 
-.Home >header h1 {
+.Home>header h1 {
     padding: 1rem 0;
     font-size: 3rem;
 }
@@ -29,7 +30,7 @@
 
 .input-search {
     height: 3.5rem;
-    border:1px solid #0230fe;
+    border: 1px solid #0230fe;
     width: 30%;
     border-radius: 0;
     border-right: 0;
@@ -45,13 +46,14 @@
     padding: 0 2rem;
     border-radius: 0 0.5rem 0.5rem 0;
 }
+
 .location {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.location > div {
+.location>div {
     margin-bottom: 1rem;
     cursor: pointer;
 }
@@ -62,7 +64,7 @@
     margin: 1rem;
 }
 
-.introduction .title{
+.introduction .title {
     font-size: 1.1rem;
     font-weight: bold;
 }
@@ -77,18 +79,19 @@
     position: relative;
 }
 
-.column-introduction:hover{
+.column-introduction:hover {
     transform: scale(1.02);
 }
 
 .column-introduction>div {
     height: 15rem;
 }
-.column-introduction>div>img{
+
+.column-introduction>div>img {
     object-fit: cover;
 }
 
-.column-introduction > .button {
+.column-introduction>.button {
     position: absolute;
     bottom: 1rem;
 }

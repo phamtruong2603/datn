@@ -1,13 +1,13 @@
-package com.example.server.dto;
+package com.example.server.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class RegisterDto {
+@AllArgsConstructor
+public class RegisterRes {
     private String avatar;
     private String first_name;
     private String last_name;
@@ -17,5 +17,5 @@ public class RegisterDto {
     private String role;
     private String address;
     private String email;
-    private String password;
+    private String token;
 }

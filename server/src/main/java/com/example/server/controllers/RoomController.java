@@ -20,6 +20,7 @@ public class RoomController {
     @PostMapping("/create-room")
     public ResponseEntity<Response> createRoom(@RequestBody RoomRequestCreate data) {
         try {
+            System.out.println(data);
             if (data.getName() == null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
                         new Response("400", "The room already exists", 1001, "")

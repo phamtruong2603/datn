@@ -10,10 +10,11 @@ import lombok.NoArgsConstructor;
 public class LoginResponse {
     private int id;
     private String avatar;
-    private String full_name;
+    private String first_name;
+    private String last_name;
     private String mobile;
     private String sex;
-    private String CMND;
+    private String cmnd;
     private String role;
     private String address;
     private String token;
