@@ -61,7 +61,10 @@ public class UserService {
         ));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         CustomUserDetails customUserDetails = (CustomUserDetails) authentication.getPrincipal();
+
+        //tao token
         String token = jwtUtil.generateToken(customUserDetails);
+
         Optional<User> user = userRepository.findByEmail(data.getEmail());
         if (user.isEmpty()){
             return "Email does not exist";

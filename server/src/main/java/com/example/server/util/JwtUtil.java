@@ -18,12 +18,12 @@ public class JwtUtil {
     @Value("${ra.jwt.EXPIRATION}")
     private String JWT_EXPIRATION;
 
-    // Tạo ra jwt từ thông tin user
+    // Tạo ra jwt từ thông tin id user
     public String generateToken(CustomUserDetails userDetails) {
         Instant instant = Instant.now().plusMillis(Long.parseLong(JWT_EXPIRATION));
         Date expirationDate = Date.from(instant);
         return Jwts.builder()
-                .setSubject(userDetails.getEmail())
+                .setSubject(String.valueOf(userDetails.getEmail()))
                 .setIssuedAt(new Date())
                 .setExpiration(expirationDate)
                 .signWith(SignatureAlgorithm.HS512, JWT_SECRET)

@@ -59,7 +59,10 @@ public class ConfigSecurity {
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests()
                 .antMatchers("/api/v1/auth/**").permitAll()
-                .antMatchers("/api/v1/hotel/create-hotel").hasAuthority("admin")
+                .antMatchers(
+                        "/api/v1/hotel/create-hotel",
+                        "/api/v1/hotel/get-all-hotel"
+                ).hasAuthority("admin")
                 .anyRequest().authenticated();
         http.authenticationProvider(authenticationProvider());
         http.addFilterBefore(jwtAuthTokenFilter(), UsernamePasswordAuthenticationFilter.class);

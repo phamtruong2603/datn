@@ -16,9 +16,16 @@ import java.util.Collection;
 @NoArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
+    private int id;
     private String email;
-
     private String password;
+    private String avatar;
+    private String first_name;
+    private String last_name;
+    private String mobile;
+    private String sex;
+    private String cmnd;
+    private String address;
 
     private Collection<? extends GrantedAuthority> role;
 
@@ -27,12 +34,18 @@ public class CustomUserDetails implements UserDetails {
         return role;
     }
 
-
-
     public static CustomUserDetails convertToUserDetails(User user) {
         CustomUserDetails customUserDetails = new CustomUserDetails(
+                user.getId(),
                 user.getEmail(),
                 user.getPassword(),
+                user.getAvatar(),
+                user.getFirst_name(),
+                user.getLast_name(),
+                user.getMobile(),
+                user.getSex(),
+                user.getCmnd(),
+                user.getAddress(),
                 Arrays.asList(new SimpleGrantedAuthority(user.getRole()))
         );
         return customUserDetails;

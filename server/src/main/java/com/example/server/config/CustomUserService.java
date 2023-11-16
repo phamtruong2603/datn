@@ -21,8 +21,19 @@ public class CustomUserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Optional<User> user = userRepository.findByEmail(email);
         if (user.isEmpty()) {
-            throw new UsernameNotFoundException("not fount!!!");
+            throw new UsernameNotFoundException("not fount!!! not email");
         }
         return CustomUserDetails.convertToUserDetails(user.get());
     }
+
+//    @Override
+//    public UserDetails loadUserById(int id) throws UsernameNotFoundException {
+//        Optional<User> user = userRepository.findById(id);
+//        System.out.println(user);
+//        if (user.isEmpty()) {
+//            throw new UsernameNotFoundException("not fount!!!");
+//        }
+//        return CustomUserDetails.convertToUserDetails(user.get());
+//    }
+
 }
