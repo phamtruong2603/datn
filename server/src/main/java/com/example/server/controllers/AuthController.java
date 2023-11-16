@@ -2,20 +2,16 @@ package com.example.server.controllers;
 
 import com.example.server.dto.LoginDto;
 import com.example.server.dto.RegisterDto;
-import com.example.server.entity.User;
-import com.example.server.responses.RegisterRes;
 import com.example.server.responses.Response;
 import com.example.server.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/auth")
+@CrossOrigin(origins = "*")
 public class AuthController {
 
     @Autowired
@@ -24,9 +20,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<Response> register(@RequestBody RegisterDto request) {
         try {
-            System.out.println(request);
             Object userSave = userService.saveUser(request);
-            System.out.println(userSave);
             if("Email already exists".equals(userSave)) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
                         new Response("404", ""+userSave, 1001, "")

@@ -1,27 +1,40 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 // import { API_URL } from "../config/config";
 
 const API_URL = 'http://localhost:3001'
 
-export const callApi = async (URL: string, method:string = 'get', data: any, ContentType: string = 'application/json') => {
+interface ApiCallResponse<T> {
+    data: T;
+}
+
+export const callApi = async <T>(
+    URL: string,
+    method: string = 'get',
+    data: Record<string, any> = {},
+    ContentType: string = 'application/json'
+): Promise<T | undefined> => {
     try {
         const token = localStorage.getItem('token');
-        let dataQuery = { data: data };
-        if (method === 'get' || method === 'GET') {
-            // dataQuery = { params: data };
+        let requestData = { data: data };
+
+        if (method.toLowerCase() === 'get') {
+            // requestData = { params: data };
         }
-        const response = await axios({
+
+        const response: AxiosResponse<ApiCallResponse<T>> = await axios({
             method: method,
             url: `${API_URL}/${URL}`,
-            ...dataQuery,
+            ...requestData,
             headers: {
                 'Content-Type': ContentType,
-                "Authorization": `bearer ${token}`
-            }
+                Authorization: `Bearer ${token}`,
+            },
         });
-        console.log(response)
-        return response.data
+
+        console.log(response.data);
+        return response.data.data;
     } catch (error) {
-        console.log(error)
+        console.error(error);
+        throw error;
     }
-}
+};
