@@ -1,12 +1,16 @@
-import React from 'react';
-import { Layout, Menu, theme } from 'antd';
+import React, { useContext } from 'react';
+import { Layout, Menu, Modal, theme } from 'antd';
 
 import { listSidebarAdmin } from '../../routes/adminRoute';
 import { listSidebarStaff } from '../../routes/manageRoute';
 import { MenuItem } from '../../types/MenuItem';
 import { useNavigate } from 'react-router-dom';
+import { CloseOutlined, ExclamationCircleFilled } from '@ant-design/icons';
+
+import { AuthContextProvider } from '../../contexts/AuthContext';
 
 const { Content, Sider } = Layout;
+const { confirm } = Modal;
 
 const list = true ? listSidebarStaff : listSidebarAdmin
 
@@ -30,7 +34,8 @@ const Siderbar = () => {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const auth = useContext(AuthContextProvider);
 
   const findItem = ({ key }: { key: string }) => {
     const itemActive: MenuItem[] = []
@@ -48,8 +53,23 @@ const Siderbar = () => {
       }
     }
 
+    const showLogoutModal = () => {
+      confirm({
+        title: "Bạn có chắc muốn thoát đăng nhập  ",
+        icon: <ExclamationCircleFilled />,
+        okText: "Đăng xuất =((",
+        closeIcon: <CloseOutlined />,
+        cancelText: "Ở lại",
+        onOk() {
+          navigate("/login")
+          auth?.logout()
+        },
+        onCancel() {},
+      });
+    };
+
     if (itemActive[0].url === "logout") {
-      console.log("logout")
+      showLogoutModal()
     } else {
       navigate(`${itemActive[0].url}`);
     }

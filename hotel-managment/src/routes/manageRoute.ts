@@ -34,6 +34,6 @@ export const listSidebarStaff: MenuItem[] = [
     {
         titleSidebar: "Logout",
         key: "logout",
-        url: "louout",
+        url: "logout",
     },
 ];

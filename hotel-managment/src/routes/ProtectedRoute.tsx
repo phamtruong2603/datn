@@ -1,8 +1,8 @@
-
 import { Navigate, Outlet } from "react-router-dom";
 
 const RefreshUrl = () => {
-  if ("token") {
+  const token = localStorage.getItem("token")
+  if (token) {
     return <Navigate to="/login" />;
   }
   return <></>;

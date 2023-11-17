@@ -68,4 +68,5 @@ public class ConfigSecurity {
         http.addFilterBefore(jwtAuthTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
+
 }

@@ -18,6 +18,7 @@ public class HotelService {
     public Hotel createHotel(HotelRequestCreate data) {
         Optional<Hotel> findHotel = hotelRepository.findByNameAndAddress(data.getName(), data.getAddress());
         if (findHotel.isPresent()) return null;
+//        Hotel hotel = HotelRequestCreateCon
         Hotel hotel = new Hotel(data.getName(), data.getStar(), data.getDescription(), data.getAddress());
         return hotelRepository.save(hotel);
     }

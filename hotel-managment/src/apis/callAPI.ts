@@ -1,38 +1,44 @@
-import axios, { AxiosResponse } from "axios";
-// import { API_URL } from "../config/config";
+import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 
-const API_URL = 'http://localhost:3001'
+const API_URL = 'http://127.0.0.1:3001/api/v1';
 
 interface ApiCallResponse<T> {
+    status: string;
+    message: string;
+    code: number;
     data: T;
 }
+
+// 'application/json' | 'multipart/form-data'
 
 export const callApi = async <T>(
     URL: string,
     method: string = 'get',
-    data: Record<string, any> = {},
+    data?: Record<string, any>,
     ContentType: string = 'application/json'
-): Promise<T | undefined> => {
+): Promise<ApiCallResponse<T> | undefined> => {
     try {
         const token = localStorage.getItem('token');
-        let requestData = { data: data };
 
-        if (method.toLowerCase() === 'get') {
-            // requestData = { params: data };
-        }
-
-        const response: AxiosResponse<ApiCallResponse<T>> = await axios({
-            method: method,
+        const requestData: AxiosRequestConfig = {
+            method,
             url: `${API_URL}/${URL}`,
-            ...requestData,
             headers: {
                 'Content-Type': ContentType,
                 Authorization: `Bearer ${token}`,
             },
-        });
+        };
 
-        console.log(response.data);
-        return response.data.data;
+        if (method.toLowerCase() === 'get' && data) {
+            requestData.params = data;
+        } else {
+            requestData.data = data;
+        }
+
+        const response: AxiosResponse<ApiCallResponse<T>> = await axios(requestData);
+
+        console.log(response);
+        return response.data;
     } catch (error) {
         console.error(error);
         throw error;

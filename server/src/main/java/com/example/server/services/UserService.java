@@ -2,6 +2,7 @@ package com.example.server.services;
 
 
 import com.example.server.config.CustomUserDetails;
+import com.example.server.config.JwtAuthTokenFilter;
 import com.example.server.dto.LoginDto;
 import com.example.server.dto.RegisterDto;
 import com.example.server.entity.User;
@@ -16,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Optional;
 
@@ -74,5 +76,21 @@ public class UserService {
                 foundUser.getId(), foundUser.getAvatar(), foundUser.getFirst_name(), foundUser.getLast_name(), foundUser.getMobile(),
                 foundUser.getSex(), foundUser.getCmnd(), foundUser.getRole(), foundUser.getAddress(), token
         );
+    }
+
+    public Object findUserByToken(String token) {
+        if (StringUtils.hasText(token) && token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+        String email = jwtUtil.getUserEmailFromJWT(token);
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent()) {
+            User foundUser = user.get();
+            return new LoginResponse(
+                    foundUser.getId(), foundUser.getAvatar(), foundUser.getFirst_name(), foundUser.getLast_name(), foundUser.getMobile(),
+                    foundUser.getSex(), foundUser.getCmnd(), foundUser.getRole(), foundUser.getAddress(), token
+            );
+        }
+        return null;
     }
 }

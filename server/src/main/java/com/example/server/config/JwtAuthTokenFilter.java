@@ -7,7 +7,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -42,7 +41,7 @@ public class JwtAuthTokenFilter extends OncePerRequestFilter {
             String jwt = getJwtFromRequest(request);
 
             if (StringUtils.hasText(jwt) && jwtUtil.validateToken(jwt)) {
-                String email = jwtUtil.getUserIdFromJWT(jwt);
+                String email = jwtUtil.getUserEmailFromJWT(jwt);
                 // Lấy thông tin người dùng từ email
                 UserDetails userDetails = customUserService.loadUserByUsername(email);
                 if(userDetails != null) {

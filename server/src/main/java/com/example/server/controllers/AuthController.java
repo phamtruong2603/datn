@@ -43,6 +43,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<Response> login(@RequestBody LoginDto data) {
+        System.out.println(data);
         try {
             Object findUser = userService.findUser(data);
             if("Email does not exist".equals(findUser)){
@@ -58,6 +59,20 @@ public class AuthController {
                     new Response("200", "", 1000, findUser)
             );
         } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                    new Response("500", "failllll", 1001, "")
+            );
+        }
+    }
+
+    @GetMapping("/verify-token")
+    public ResponseEntity<Response> autoLogin(@RequestHeader(value = "Authorization") String token) {
+        try {
+            Object findUser = userService.findUserByToken(token);
+            return ResponseEntity.status(HttpStatus.OK).body(
+                    new Response("200", "", 1000, findUser)
+            );
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
                     new Response("500", "failllll", 1001, "")
             );

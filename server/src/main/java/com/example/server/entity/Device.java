@@ -1,5 +1,6 @@
 package com.example.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,5 +24,6 @@ public class Device {
     private String name;
 
     @ManyToMany(mappedBy = "devices")
+    @JsonIgnore
     private List<Room> rooms;
 }

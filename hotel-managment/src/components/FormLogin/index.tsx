@@ -1,17 +1,54 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './Form.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { login } from '../../apis/auth';
+
+import { AuthContextProvider } from '../../contexts/AuthContext';
+
+interface IFormLogin {
+    email: string | undefined
+    password: string | undefined
+}
 
 const Form = () => {
+    const auth = useContext(AuthContextProvider);
+    const setUserState = auth?.setUserState
+
+    const [data, setData] = useState<IFormLogin>({
+        email: undefined,
+        password: undefined
+    })
+
     const navigate = useNavigate()
     const submitFormLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const res = await login(data)
+        if(res) {
+            setUserState?.({
+                isLogin: true,
+                user: res.data,
+                token: res.data.token
+            })
+            localStorage.setItem('token', res.data.token)
+            res.data.role === "user" ? 
+            navigate('/')
+            :
+            navigate('/admin/statistical')
+        }
     };
 
     const navigateHome = async (e: any) => {
         e.preventDefault();
         navigate('/')
     };
+
+    const changeInfor = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setData({
+            ...data,
+            [e.target.name]: e.target.value
+        })
+    }
+
     return (
         <div className='Form'>
             <div>
@@ -26,6 +63,7 @@ const Form = () => {
                                 type="email"
                                 name='email'
                                 placeholder='email@gmail.com'
+                                onChange={changeInfor}
                             />
                         </div>
                         <div>
@@ -35,6 +73,7 @@ const Form = () => {
                                 type="password"
                                 name='password'
                                 placeholder='******'
+                                onChange={changeInfor}
                             />
                         </div>
                         <span>Quên mật khẩu???</span>
