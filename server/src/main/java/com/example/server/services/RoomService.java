@@ -36,6 +36,10 @@ public class RoomService {
         }
     }
 
+    public Object getAllRoomByHotel(int id) {
+        return null;
+    }
+
     public Room getRoomById(int id){
 
         Optional<Room> room = roomRepository.findById(id);

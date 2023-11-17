@@ -6,12 +6,14 @@ import com.example.server.entity.Room;
 import com.example.server.responses.Response;
 import com.example.server.services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/room")
+@CrossOrigin(origins = "*")
 public class RoomController {
 
     @Autowired
@@ -40,6 +42,15 @@ public class RoomController {
                     new Response("500", "fail", 1001, "")
             );
         }
+    }
+
+    @GetMapping("/room/{hotel_id}")
+    public ResponseEntity<Response> getAllRoomByHotel (@Param(value = "hotel_id") int id) {
+        Object room = roomService.getAllRoomByHotel(id);
+        String message = "success";
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                new Response("500", message, 1001, room)
+        );
     }
 
     @GetMapping("/{id}")

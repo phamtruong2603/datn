@@ -1,7 +1,8 @@
 import "./RoomManagement.css";
 import { Room } from "../../types/room";
 import TableRoom from "../../components/Table/TableRoom";
-import { Input } from 'antd';
+import { Button, Input } from 'antd';
+import { useNavigate } from "react-router-dom";
 
 const { Search } = Input;
 
@@ -50,7 +51,13 @@ const data: Room[] = [
 
 const RoomManagement = () => {
 
+    const navigate = useNavigate();
+
     const onSearch = () => { };
+
+    const navigateCreateRoom = () => {
+        navigate("/admin/room-management/create-room")
+    }
 
     return (
         <div>
@@ -58,6 +65,8 @@ const RoomManagement = () => {
                 <div className="title-layout">Danh sách phòng trong khách sạn</div>
                 <div style={{ margin: "1rem" }}><Search placeholder="Nhập phòng muốn tìm....." onSearch={onSearch} style={{ width: 300 }} /></div>
             </div>
+            <Button onClick={navigateCreateRoom} type="primary">Thêm phòng mới</Button>
+            <br /> <br />
             <TableRoom dataSource={data} />
         </div>
     )

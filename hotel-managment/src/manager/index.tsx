@@ -5,6 +5,7 @@ import Statistical from "./statistical/Statistical";
 import RoomManagement from "./RoomManagement/RoomManagement";
 import History from "./History/History";
 import BillConfirmation from "./BillConfirmation/BillConfirmation";
+import CreateRoom from "./RoomManagement/CreateRoom";
 
 const Manager = () => {
   return (
@@ -16,6 +17,8 @@ const Manager = () => {
           <Routes>
             <Route path="/statistical" element={<Statistical />} />
             <Route path="/room-management" element={<RoomManagement />} />
+            <Route path="/room-management/create-room" element={<CreateRoom />} />
+            
             <Route path="/history" element={<History />} />
             <Route path="/bill-confirmation" element={<BillConfirmation />} />
           </Routes>
