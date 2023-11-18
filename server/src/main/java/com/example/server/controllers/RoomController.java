@@ -29,7 +29,7 @@ public class RoomController {
                 );
             }
             Room saveRoom = roomService.createRoom(data);
-            if (saveRoom == null){
+            if (saveRoom == null) {
                 return ResponseEntity.status(HttpStatus.CONFLICT).body(
                         new Response("409", "The room already exists", 1001, "")
                 );
@@ -37,19 +37,37 @@ public class RoomController {
             return ResponseEntity.status(HttpStatus.CREATED).body(
                     new Response("201", "success", 1000, saveRoom)
             );
-        } catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
                     new Response("500", "fail", 1001, "")
             );
         }
     }
 
-    @GetMapping("/room/{hotel_id}")
-    public ResponseEntity<Response> getAllRoomByHotel (@Param(value = "hotel_id") int id) {
-        Object room = roomService.getAllRoomByHotel(id);
+    @GetMapping("/get-all")
+    public ResponseEntity<Response> getAllRoom() {
+        Object rooms = roomService.getAllRoom();
         String message = "success";
+        String status = "200";
+        if (rooms == null) {
+            message = "not fount";
+            status = "404";
+        }
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
-                new Response("500", message, 1001, room)
+                new Response(status, message, 1001, rooms)
+        );
+    }
+
+    @GetMapping("/get-all-room-by-hotel")
+
+    public ResponseEntity<Response> getRoomByHotel(@RequestParam int hotel_id) {
+        System.out.println(hotel_id);
+        Object rooms = roomService.getRoomByHotel(hotel_id);
+        String message = "success";
+        String status = "200";
+        System.out.println(rooms);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                new Response(status, message, 1001, "")
         );
     }
 

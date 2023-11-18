@@ -40,9 +40,11 @@ public class Room {
     private Hotel hotel;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "room", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<User> users;
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(
             name = "room_device",
             joinColumns = @JoinColumn(name = "room_id"),

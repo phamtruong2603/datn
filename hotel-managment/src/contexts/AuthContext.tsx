@@ -1,6 +1,7 @@
 import React, { ReactNode, createContext, useEffect, useState } from 'react';
 import { User } from '../types/user';
 import { loginByToken } from '../apis/auth';
+import { getAllRoom } from '../apis/room';
 
 export interface IAuthContext {
     children: ReactNode;
@@ -55,8 +56,14 @@ export const AuthContext: React.FC<IAuthContext> = ({ children }) => {
         });
     };
 
+    const test = async () => {
+        const res = await getAllRoom();
+        console.log(res)
+    }
+
     useEffect(() => {
         autoLogin()
+        test()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 

@@ -58,7 +58,10 @@ public class ConfigSecurity {
         http.cors(Customizer.withDefaults()).csrf(csrf -> csrf.disable())
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests()
-                .antMatchers("/api/v1/auth/**").permitAll()
+                .antMatchers(
+                        "/api/v1/auth/**",
+                        "/api/v1/room/get-all"
+                ).permitAll()
                 .antMatchers(
                         "/api/v1/hotel/create-hotel",
                         "/api/v1/hotel/get-all-hotel"

@@ -8,6 +8,7 @@ import com.example.server.repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -36,11 +37,22 @@ public class RoomService {
         }
     }
 
-    public Object getAllRoomByHotel(int id) {
-        return null;
+    public Object getAllRoom() {
+        try {
+            return roomRepository.findAll();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
-    public Room getRoomById(int id){
+    public Object getRoomByHotel(int hotel_id) {
+//        Optional<List<Room>> listRoom = roomRepository.findRoomsByHotelId(hotel_id);
+        Optional<Room> listRoom = roomRepository.findByHotelId(hotel_id);
+        System.out.println(listRoom);
+        return listRoom;
+    }
+
+    public Room getRoomById(int id) {
 
         Optional<Room> room = roomRepository.findById(id);
         if (room.isPresent()) {
