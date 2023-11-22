@@ -3,7 +3,6 @@ import { Bill } from "../../types/bill";
 
 const data: Bill[] = [
   {
-    key: 1,
     id: 1,
     name: "Bill Phòng 1",
     price: 2500000.0,
@@ -14,7 +13,6 @@ const data: Bill[] = [
     status: true
   },
   {
-    key: 2,
     id: 2,
     name: "Bill Phòng 1",
     price: 2500000.0,
@@ -25,7 +23,6 @@ const data: Bill[] = [
     status: false
   },
   {
-    key: 3,
     id: 3,
     name: "Bill Phòng 2",
     price: 2500000.0,

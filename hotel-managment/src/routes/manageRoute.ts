@@ -12,7 +12,7 @@ export const listSidebarStaff: MenuItem[] = [
         url: "booking-confirmation",
     },
     {
-        titleSidebar: "Xác nhận hóa đơn",
+        titleSidebar: "Xác nhận thanh toán",
         key: "bill-confirmation",
         url: "bill-confirmation",
     },

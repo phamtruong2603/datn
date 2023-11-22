@@ -6,7 +6,6 @@ const { RangePicker } = DatePicker;
 
 const data: Bill[] = [
   {
-    key: 1,
     id: 1,
     name: "Bill Phòng 1",
     price: 2500000.0,
@@ -16,7 +15,6 @@ const data: Bill[] = [
     date: "2023-11-10"
   },
   {
-    key: 2,
     id: 2,
     name: "Bill Phòng 1",
     price: 2500000.0,
@@ -26,7 +24,6 @@ const data: Bill[] = [
     date: "2023-11-10"
   },
   {
-    key: 3,
     id: 3,
     name: "Bill Phòng 2",
     price: 2500000.0,

@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import wifi from '../../images/wifi.png';
 import parking from '../../images/parking.png';
 import swimming from '../../images/swimming.png';
+import { Button } from 'antd';
+import { useLocation } from 'react-router-dom';
+
+import { AuthContextProvider } from '../../contexts/AuthContext';
 
 const Detail = () => {
 
-    const onsubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const auth = useContext(AuthContextProvider)
+    const user = auth?.userState
+
+    const location = useLocation();
+    const { state } = location;
+
+    const [dataUser, setDataUser] = useState<any>()
+
+    const changPrames = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setDataUser({
+            ...dataUser,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const onsubmit = async (e: React.FormEvent<HTMLFormElement> | any) => {
         e.preventDefault();
+        console.log(dataUser)
     }
 
     return (
@@ -100,28 +120,58 @@ const Detail = () => {
                     <div className='name'>
                         <div className='first_name'>
                             <label htmlFor="first_name">Họ và tên đệm</label>
-                            <input type="text" id='first_name' name='first_name' placeholder='Nguyen Van' />
+                            <input
+                                type="text"
+                                id='first_name'
+                                name='first_name'
+                                placeholder='Nguyen Van'
+                                onChange={changPrames}
+                            />
                         </div>
                         <div className='last_name'>
                             <label htmlFor="last_name">Tên của bạn</label>
-                            <input type="text" id='last_name' name='last_name' placeholder='An' />
+                            <input
+                                type="text"
+                                id='last_name'
+                                name='last_name'
+                                placeholder='An'
+                                onChange={changPrames}
+                            />
                         </div>
                     </div>
                     <div className='email'>
                         <label htmlFor="email">Địa chỉ email</label>
-                        <input type="text" id='email' name='email' placeholder='email@gmail.com' />
+                        <input
+                            type="text"
+                            id='email'
+                            name='email'
+                            placeholder='email@gmail.com'
+                            onChange={changPrames}
+                        />
                     </div>
                     <div className='country'>
                         <label htmlFor="country">Vùng/quốc gia</label>
-                        <input type="text" id='country' name='country' placeholder='Viet Nam' />
+                        <input
+                            type="text"
+                            id='country'
+                            name='country'
+                            placeholder='Viet Nam'
+                            onChange={changPrames}
+                        />
                     </div>
                     <div>
                         <label htmlFor="mobile">Điện thoại (ưu tiên số ĐTDĐ) </label>
-                        <input type="text" id='mobile' name='mobile' placeholder='mobile' />
+                        <input
+                            type="text"
+                            id='mobile'
+                            name='mobile'
+                            placeholder='mobile'
+                            onChange={changPrames}
+                        />
                     </div>
                 </form>
 
-                <div>
+                <div className='who_option'>
                     <h3>Bạn đặt phòng cho ai?</h3>
                     <div>
                         <input type="radio" />
@@ -133,6 +183,18 @@ const Detail = () => {
                     </div>
                 </div>
 
+                <div className='special_requirements'>
+                    <h3>Các Yêu Cầu Đặc Biệt</h3>
+                    <span>Các yêu cầu đặc biệt không đảm bảo sẽ được đáp ứng – tuy nhiên, chỗ nghỉ
+                        sẽ cố gắng hết sức để thực hiện. Bạn luôn có thể gửi yêu cầu đặc biệt sau
+                        khi hoàn tất đặt phòng của mình!</span>
+                    <span>Vui lòng ghi yêu cầu của bạn tại đây. (không bắt buộc)</span>
+                    <textarea name="" id=""></textarea>
+                </div>
+
+                <div className='DetailRoomConfirm'>
+                    <Button type='primary' onClick={onsubmit}>Xác nhận thông tin</Button>
+                </div>
 
             </div>
         </div>

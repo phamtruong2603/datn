@@ -1,5 +1,4 @@
 export interface Bill {
-    key?: number
     id: Number,
     name: string
     price: Number

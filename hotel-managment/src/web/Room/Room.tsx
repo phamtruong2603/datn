@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Room.css';
 import { Button, DatePicker, Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { getAllRoom } from '../../apis/room';
 
 import Introduce from './Introduce';
+import { Room as typeRoom } from '../../types/room';
 
 const { RangePicker } = DatePicker;
 
 const Room = () => {
+
+  const [rooms, setRoom] = useState<typeRoom[]>()
+  console.log(rooms)
+
+  useEffect(() => {
+    (async () => {
+      const res = await getAllRoom();
+      setRoom(res?.data)
+    })()
+  }, [])
+
 
   return (
     <div className='Home'>
@@ -33,16 +46,22 @@ const Room = () => {
         </div>
 
         <div className='list-content_room'>
-          <Introduce
-            id={1}
-            name={''}
-            status={true}
-            price={10.0}
-            max_user={4}
-            description={''}
-            hotel_id={1}
-            img={''}
-          />
+          {
+            rooms && rooms.map((room) => {
+              return (
+                <Introduce
+                  id={room.id}
+                  name={room.name}
+                  status={room.status}
+                  price={room.price}
+                  max_user={room.max_user}
+                  description={room.description}
+                  hotel_id={room.hotel_id}
+                  img={room.img}
+                />
+              )
+            })
+          }
         </div>
       </div>
     </div>

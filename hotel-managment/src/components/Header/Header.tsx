@@ -29,8 +29,10 @@ const Header = () => {
         {user?.isLogin ?
           <div
             style={{ fontSize: '1.2rem', display: "flex", alignItems: 'center' }}
+            className='auth'
           >
             Xin chào {user.user?.last_name}
+            <span onClick={() => auth?.logout()}>Logout</span>
           </div>
           :
           <div className='auth'>

@@ -53,7 +53,7 @@ public class RoomController {
             message = "not fount";
             status = "404";
         }
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+        return ResponseEntity.status(HttpStatus.OK).body(
                 new Response(status, message, 1001, rooms)
         );
     }
@@ -66,7 +66,7 @@ public class RoomController {
         String message = "success";
         String status = "200";
         System.out.println(rooms);
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+        return ResponseEntity.status(HttpStatus.OK).body(
                 new Response(status, message, 1001, "")
         );
     }

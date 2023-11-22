@@ -8,7 +8,6 @@ const { Search } = Input;
 
 const data: Room[] = [
     {
-        key: 1,
         id: 1,
         name: "Phòng 1",
         status: false,
@@ -16,7 +15,6 @@ const data: Room[] = [
         max_user: 4
     },
     {
-        key: 2,
         id: 2,
         name: "Phòng 2",
         status: true,
@@ -24,7 +22,6 @@ const data: Room[] = [
         max_user: 4
     },
     {
-        key: 3,
         id: 3,
         name: "Phòng 3",
         status: null,
@@ -32,7 +29,6 @@ const data: Room[] = [
         max_user: 2
     },
     {
-        key: 4,
         id: 4,
         name: "Phòng 4",
         status: false,
@@ -40,7 +36,6 @@ const data: Room[] = [
         max_user: 2
     },
     {
-        key: 5,
         id: 5,
         name: "Phòng 5",
         status: false,

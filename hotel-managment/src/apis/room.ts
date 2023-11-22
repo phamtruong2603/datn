@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Room } from "../types/room";
 import { callApi } from "./callAPI";
 
@@ -16,7 +15,5 @@ export const createRoom = async (
 }
 
 export const getAllRoom = async () => {
-    const res = await axios.get("http://localhost:3001/api/v1/room/get-all")
-    console.log(res)
-    return res
+    return await callApi<Room[]>("room/get-all", 'get')
 }

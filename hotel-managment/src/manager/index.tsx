@@ -6,6 +6,9 @@ import RoomManagement from "./RoomManagement/RoomManagement";
 import History from "./History/History";
 import BillConfirmation from "./BillConfirmation/BillConfirmation";
 import CreateRoom from "./RoomManagement/CreateRoom";
+import BookingConfirmation from "./BookingConfirmation/BookingConfirmation";
+import DetailBill from "./BillConfirmation/DetailBill";
+import DetailBooking from "./BookingConfirmation/DetailBooking";
 
 const Manager = () => {
   return (
@@ -21,6 +24,10 @@ const Manager = () => {
             
             <Route path="/history" element={<History />} />
             <Route path="/bill-confirmation" element={<BillConfirmation />} />
+            <Route path="/bill-confirmation/:id" element={<DetailBill />} />
+
+            <Route path="/booking-confirmation" element={<BookingConfirmation />} />
+            <Route path="/booking-confirmation" element={<DetailBooking />} />
           </Routes>
         </div>
       </div>

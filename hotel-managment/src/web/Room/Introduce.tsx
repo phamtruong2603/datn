@@ -17,8 +17,19 @@ const Introduce: React.FC<Room> = ({
   const navigate = useNavigate();
   const onclick = (e: React.MouseEvent, id: number) => {
     e.preventDefault();
-    navigate(`/rooms/${id}`)
-};
+    navigate(`/rooms/${id}`,
+      {
+        state: {
+          room_id: id,
+          hotel_id: hotel_id,
+          status,
+          price,
+          max_user,
+          description,
+          img,
+        }
+      })
+  };
 
   return (
     <div className='Introduce'>
@@ -27,7 +38,7 @@ const Introduce: React.FC<Room> = ({
       </div>
 
       <div className='content-Introduce'>
-        <h2>Phòng ngủ đôi Full Tiện Ich</h2>
+        <h2>{name}</h2>
         <span>**************************************************</span>
         <p style={{ margin: '0.2rem 0' }}>Địa chỉ: Thai Binh</p>
         <span className='discount-content-Introduce'>Ưu Đãi Cuối Năm</span>
@@ -57,7 +68,7 @@ const Introduce: React.FC<Room> = ({
           <div className='discount-BEI'><span>Tiết kiệm 30%</span></div>
           <p>Đã bao gồm thuế và phí</p>
         </div>
-        <div className='button-BEI'><Button onClick={(e) => onclick(e, 2)} type='primary'>Xem Chỗ Trống{'  >'}</Button></div>
+        <div className='button-BEI'><Button onClick={(e) => onclick(e, id)} type='primary'>Xác nhận thông tin{'  >'}</Button></div>
       </div>
     </div>
   )

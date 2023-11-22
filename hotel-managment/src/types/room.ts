@@ -1,6 +1,5 @@
 export interface Room {
-    key?: number
-    id: Number;
+    id: number;
     name: string;
     status: boolean | null;
     price: Number;
