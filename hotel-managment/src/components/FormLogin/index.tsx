@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../apis/auth';
 
 import { AuthContextProvider } from '../../contexts/AuthContext';
+import { MessageContextProvider } from '../../contexts/MessageContext';
 
 interface IFormLogin {
     email: string | undefined
@@ -12,7 +13,9 @@ interface IFormLogin {
 
 const Form = () => {
     const auth = useContext(AuthContextProvider);
+    const message = useContext(MessageContextProvider);
     const setUserState = auth?.setUserState
+    const success = message?.success
 
     const [data, setData] = useState<IFormLogin>({
         email: undefined,
@@ -30,6 +33,7 @@ const Form = () => {
                 token: res.data.token
             })
             localStorage.setItem('token', res.data.token)
+            success("Đăng nhập thành công")
             res.data.role === "user" ? 
             navigate('/')
             :

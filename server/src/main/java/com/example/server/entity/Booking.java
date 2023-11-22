@@ -26,8 +26,14 @@ public class Booking {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "rentalPeriod")
-    private String rentalPeriod;
+    @Column(name ="discount")
+    private String discount;
+
+    @Column(name = "received_date")
+    private String received_date;
+
+    @Column(name = "pay_day")
+    private String pay_day;
 
     @Column(name = "count_user")
     private int count_user;
@@ -41,9 +47,14 @@ public class Booking {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hotle_id")
-    @JsonIgnore
     private Hotel hotel;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "booking", fetch = FetchType.LAZY)
+    @ManyToMany
+    @JsonIgnore
+    @JoinTable(
+            name = "booking_user",
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
     private List<User> users;
 }

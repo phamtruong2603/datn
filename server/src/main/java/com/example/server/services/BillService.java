@@ -38,7 +38,6 @@ public class BillService {
 
         Bill bill =new Bill();
         bill.setName(res.getName());
-        bill.setPrice(res.getPrice());
         billRepository.save(bill);
 
         return null;

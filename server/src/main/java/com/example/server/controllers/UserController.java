@@ -10,12 +10,29 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/test")
+@RequestMapping("/api/v1/user")
+@CrossOrigin(origins = "*")
 public class UserController {
 
 
     @Autowired
     private UserService userService;
+
+    @GetMapping("/get-all")
+    public ResponseEntity<Response> getAllUser() {
+
+        Object users = userService.getAllUser();
+
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(
+                    new Response("200", "success", 1000, users)
+            );
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                    new Response("500", "failllll", 1001, "")
+            );
+        }
+    }
 
     @PostMapping("/register")
     public ResponseEntity<Response> register(@RequestBody RegisterDto request) {

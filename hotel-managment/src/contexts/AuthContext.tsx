@@ -2,7 +2,7 @@ import React, { ReactNode, createContext, useEffect, useState } from 'react';
 import { User } from '../types/user';
 import { loginByToken } from '../apis/auth';
 
-export interface IAuthContext {
+interface IAuthContext {
     children: ReactNode;
 }
 

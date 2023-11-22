@@ -37,9 +37,9 @@ public class UserService {
     private JwtUtil jwtUtil;
 
     public Object saveUser(RegisterDto data) {
-        if(data == null) return null;
+        if (data == null) return null;
         Optional<User> userCheck = userRepository.findByEmail(data.getEmail());
-        if(userCheck.isPresent()) {
+        if (userCheck.isPresent()) {
             return "Email already exists";
         }
         String encodedPassword = passwordEncoder.encode(data.getPassword());
@@ -57,6 +57,10 @@ public class UserService {
         );
     }
 
+    public Object getAllUser() {
+        return userRepository.findAll();
+    }
+
     public Object findUser(LoginDto data) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 data.getEmail(), data.getPassword()
@@ -68,7 +72,7 @@ public class UserService {
         String token = jwtUtil.generateToken(customUserDetails);
 
         Optional<User> user = userRepository.findByEmail(data.getEmail());
-        if (user.isEmpty()){
+        if (user.isEmpty()) {
             return "Email does not exist";
         }
         User foundUser = user.get();

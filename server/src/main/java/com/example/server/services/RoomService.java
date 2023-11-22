@@ -46,8 +46,7 @@ public class RoomService {
     }
 
     public Object getRoomByHotel(int hotel_id) {
-//        Optional<List<Room>> listRoom = roomRepository.findRoomsByHotelId(hotel_id);
-        Optional<Room> listRoom = roomRepository.findByHotelId(hotel_id);
+        List<Room> listRoom = roomRepository.findRoomsByHotelId(hotel_id);
         System.out.println(listRoom);
         return listRoom;
     }

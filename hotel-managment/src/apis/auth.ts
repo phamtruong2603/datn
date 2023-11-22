@@ -13,3 +13,7 @@ export const login = async (
 export const loginByToken = async () => {
     return await callApi<User>('auth/verify-token',"get")
 }
+
+export const getAllUser = async () => {
+    return await callApi<User[]>('user/get-all',"get")
+}

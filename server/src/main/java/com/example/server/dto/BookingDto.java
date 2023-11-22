@@ -1,21 +1,26 @@
 package com.example.server.dto;
 
-import com.example.server.entity.Booking;
 import com.example.server.entity.Hotel;
 import com.example.server.entity.Room;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.server.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BillDto {
+public class BookingDto {
     private String name;
+    private String description;
+    private String discount;
+    private String received_date;
+    private String pay_day;
+    private int count_user;
+    private boolean status;
     private int room_id;
     private int hotel_id;
-    private int booking_id;
+    private List<RegisterDto> users;
 }

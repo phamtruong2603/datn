@@ -1,32 +1,13 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import wifi from '../../images/wifi.png';
 import parking from '../../images/parking.png';
 import swimming from '../../images/swimming.png';
 import { Button } from 'antd';
-import { useLocation } from 'react-router-dom';
-
-import { AuthContextProvider } from '../../contexts/AuthContext';
 
 const Detail = () => {
 
-    const auth = useContext(AuthContextProvider)
-    const user = auth?.userState
-
-    const location = useLocation();
-    const { state } = location;
-
-    const [dataUser, setDataUser] = useState<any>()
-
-    const changPrames = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setDataUser({
-            ...dataUser,
-            [e.target.name]: e.target.value
-        })
-    }
-
-    const onsubmit = async (e: React.FormEvent<HTMLFormElement> | any) => {
+    const onsubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(dataUser)
     }
 
     return (
@@ -120,54 +101,24 @@ const Detail = () => {
                     <div className='name'>
                         <div className='first_name'>
                             <label htmlFor="first_name">Họ và tên đệm</label>
-                            <input
-                                type="text"
-                                id='first_name'
-                                name='first_name'
-                                placeholder='Nguyen Van'
-                                onChange={changPrames}
-                            />
+                            <input type="text" id='first_name' name='first_name' placeholder='Nguyen Van' />
                         </div>
                         <div className='last_name'>
                             <label htmlFor="last_name">Tên của bạn</label>
-                            <input
-                                type="text"
-                                id='last_name'
-                                name='last_name'
-                                placeholder='An'
-                                onChange={changPrames}
-                            />
+                            <input type="text" id='last_name' name='last_name' placeholder='An' />
                         </div>
                     </div>
                     <div className='email'>
                         <label htmlFor="email">Địa chỉ email</label>
-                        <input
-                            type="text"
-                            id='email'
-                            name='email'
-                            placeholder='email@gmail.com'
-                            onChange={changPrames}
-                        />
+                        <input type="text" id='email' name='email' placeholder='email@gmail.com' />
                     </div>
                     <div className='country'>
                         <label htmlFor="country">Vùng/quốc gia</label>
-                        <input
-                            type="text"
-                            id='country'
-                            name='country'
-                            placeholder='Viet Nam'
-                            onChange={changPrames}
-                        />
+                        <input type="text" id='country' name='country' placeholder='Viet Nam' />
                     </div>
                     <div>
                         <label htmlFor="mobile">Điện thoại (ưu tiên số ĐTDĐ) </label>
-                        <input
-                            type="text"
-                            id='mobile'
-                            name='mobile'
-                            placeholder='mobile'
-                            onChange={changPrames}
-                        />
+                        <input type="text" id='mobile' name='mobile' placeholder='mobile' />
                     </div>
                 </form>
 
@@ -193,7 +144,7 @@ const Detail = () => {
                 </div>
 
                 <div className='DetailRoomConfirm'>
-                    <Button type='primary' onClick={onsubmit}>Xác nhận thông tin</Button>
+                    <Button type='primary'>Xác nhận thông tin</Button>
                 </div>
 
             </div>

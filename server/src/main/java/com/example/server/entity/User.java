@@ -60,10 +60,9 @@ public class User {
     @JsonIgnore
     private Bill bill;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "booking_id")
+    @ManyToMany(mappedBy = "users")
     @JsonIgnore
-    private Booking booking;
+    private List<Booking> bookings;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     private List<Notification> notifications;

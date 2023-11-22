@@ -11,5 +11,5 @@ import java.util.Optional;
 
 @Repository
 public interface RoomRepository extends JpaRepository<Room, Integer> {
-    Optional<Room> findByHotelId(int hotelId);
+    List<Room> findRoomsByHotelId(int hotelId);
 }

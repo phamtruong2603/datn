@@ -64,7 +64,8 @@ public class ConfigSecurity {
                 ).permitAll()
                 .antMatchers(
                         "/api/v1/hotel/create-hotel",
-                        "/api/v1/hotel/get-all-hotel"
+                        "/api/v1/hotel/get-all-hotel",
+                        "/api/v1/user/get-all"
                 ).hasAuthority("admin")
                 .anyRequest().authenticated();
         http.authenticationProvider(authenticationProvider());

@@ -9,6 +9,7 @@ import CreateRoom from "./RoomManagement/CreateRoom";
 import BookingConfirmation from "./BookingConfirmation/BookingConfirmation";
 import DetailBill from "./BillConfirmation/DetailBill";
 import DetailBooking from "./BookingConfirmation/DetailBooking";
+import ClientManagement from "./ClientManagement/ClientManagement";
 
 const Manager = () => {
   return (
@@ -27,7 +28,9 @@ const Manager = () => {
             <Route path="/bill-confirmation/:id" element={<DetailBill />} />
 
             <Route path="/booking-confirmation" element={<BookingConfirmation />} />
-            <Route path="/booking-confirmation" element={<DetailBooking />} />
+            <Route path="/booking-confirmation/:id" element={<DetailBooking />} />
+
+            <Route path="/client-management" element={<ClientManagement />} />
           </Routes>
         </div>
       </div>

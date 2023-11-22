@@ -17,3 +17,11 @@ export const createRoom = async (
 export const getAllRoom = async () => {
     return await callApi<Room[]>("room/get-all", 'get')
 }
+
+export const getRoomByHotelId = async (
+    data: {
+        hotel_id: number
+    }
+) => {
+    return await callApi<Room[]>("room/get-all", 'get', data)
+}

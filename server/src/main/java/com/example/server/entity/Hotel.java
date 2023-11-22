@@ -37,9 +37,11 @@ public class Hotel {
     private List<Room> rooms;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Booking> bookings;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Bill> bills;
 
     public Hotel(String name, float star, String description, String address) {

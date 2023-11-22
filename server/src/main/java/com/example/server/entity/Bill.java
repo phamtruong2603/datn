@@ -22,9 +22,6 @@ public class Bill {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "price")
-    private float price;
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
     private Room room;
