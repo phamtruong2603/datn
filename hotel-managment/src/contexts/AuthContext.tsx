@@ -34,7 +34,7 @@ export const AuthContext: React.FC<IAuthContext> = ({ children }) => {
     const autoLogin = async () => {
         if (localStorage.getItem('token')) {
             const res = await loginByToken()
-            if (res) {
+            if (res?.data) {
                 setUserState?.({
                     isLogin: true,
                     user: res.data,
@@ -42,7 +42,9 @@ export const AuthContext: React.FC<IAuthContext> = ({ children }) => {
                 })
                 localStorage.setItem('token', res.data.token)
             }
-
+            else {
+                localStorage.removeItem("token");
+            }
         }
     };
 

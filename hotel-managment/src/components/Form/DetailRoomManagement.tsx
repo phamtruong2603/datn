@@ -11,7 +11,7 @@ interface IDetailRoomManagement {
     data: Room[]
 }
 
-const DetailRoomManagement:React.FC<IDetailRoomManagement> = ({data}) => {
+const DetailRoomManagement: React.FC<IDetailRoomManagement> = ({ data }) => {
     const initialValues = {
     };
 

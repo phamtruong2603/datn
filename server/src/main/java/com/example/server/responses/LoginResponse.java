@@ -15,6 +15,7 @@ public class LoginResponse {
     private String mobile;
     private String sex;
     private String cmnd;
+    private String email;
     private String role;
     private String address;
     private String token;

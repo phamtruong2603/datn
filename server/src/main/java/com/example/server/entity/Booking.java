@@ -43,11 +43,8 @@ public class Booking {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
+    @JsonIgnore
     private Room room;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "hotle_id")
-    private Hotel hotel;
 
     @ManyToMany
     @JsonIgnore

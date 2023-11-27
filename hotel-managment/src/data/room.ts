@@ -32,3 +32,29 @@ export const roomData: Room[] = [
         img: ""
     }
 ]
+
+// {
+//     name: string,
+//     description: string,
+//     discount: string,
+//     received_date: string,
+//     pay_day: string,
+//     count_user: number,
+//     status: boolean,
+//     room_id: number,
+//     hotel_id: number,
+//     users: [
+//         {
+//             avatar: "",
+//             first_name:"Nguyen Van",
+//             last_name: "Admin",
+//             mobile: "1234567890",
+//             sex: "",
+//             cmnd: "112233445566",
+//             role: "adm",
+//             address: "Thai Binh",
+//             email: "phucchelsea01@gmail.com",
+//             password: "user"
+//         }
+//     ]
+// }

@@ -78,7 +78,7 @@ public class UserService {
         User foundUser = user.get();
         return new LoginResponse(
                 foundUser.getId(), foundUser.getAvatar(), foundUser.getFirst_name(), foundUser.getLast_name(), foundUser.getMobile(),
-                foundUser.getSex(), foundUser.getCmnd(), foundUser.getRole(), foundUser.getAddress(), token
+                foundUser.getSex(), foundUser.getCmnd(), foundUser.getEmail(), foundUser.getRole(), foundUser.getAddress(), token
         );
     }
 
@@ -92,7 +92,7 @@ public class UserService {
             User foundUser = user.get();
             return new LoginResponse(
                     foundUser.getId(), foundUser.getAvatar(), foundUser.getFirst_name(), foundUser.getLast_name(), foundUser.getMobile(),
-                    foundUser.getSex(), foundUser.getCmnd(), foundUser.getRole(), foundUser.getAddress(), token
+                    foundUser.getSex(), foundUser.getCmnd(), foundUser.getEmail(), foundUser.getRole(), foundUser.getAddress(), token
             );
         }
         return null;

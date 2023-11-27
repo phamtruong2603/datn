@@ -12,7 +12,6 @@ const { RangePicker } = DatePicker;
 const Room = () => {
 
   const [rooms, setRoom] = useState<typeRoom[]>()
-  console.log(rooms)
 
   useEffect(() => {
     (async () => {

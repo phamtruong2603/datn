@@ -62,7 +62,6 @@ public class BookingService {
                 booking.setCount_user(req.getCount_user());
                 booking.setStatus(req.isStatus());
                 booking.setRoom(room.get());
-                booking.setHotel(hotel.get());
                 if (user.isPresent()) {
                     booking.setUsers(Arrays.asList(user.get()));
                     return bookingRepository.save(booking);
@@ -98,4 +97,10 @@ public class BookingService {
 
         return null;
     }
+
+    public Object getAllBooking(int room_id) {
+        List<Booking> bookings = bookingRepository.findByRoom_id(room_id);
+        return bookings;
+    }
+
 }

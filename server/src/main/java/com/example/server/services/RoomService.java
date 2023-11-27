@@ -5,9 +5,11 @@ import com.example.server.entity.Hotel;
 import com.example.server.entity.Room;
 import com.example.server.repository.HotelRepository;
 import com.example.server.repository.RoomRepository;
+import com.example.server.responses.RoomResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,9 +48,26 @@ public class RoomService {
     }
 
     public Object getRoomByHotel(int hotel_id) {
-        List<Room> listRoom = roomRepository.findRoomsByHotelId(hotel_id);
-        System.out.println(listRoom);
-        return listRoom;
+        Optional<Hotel> hotel = hotelRepository.findById(hotel_id);
+
+        if (hotel.isPresent()) {
+            Hotel h = hotel.get();
+            List<Room> listRoom = roomRepository.findRoomsByHotel(h);
+            List<RoomResponse> responses = new ArrayList<>();
+            for (Room room : listRoom) {
+                RoomResponse response = new RoomResponse();
+                response.setId(room.getId());
+                response.setHotel_id(h.getId());
+                response.setName(room.getName());
+                response.setDescription(room.getDescription());
+                response.setPrice(room.getPrice());
+                response.setMax_user(room.getMax_user());
+                response.setStatus(room.isStatus());
+                responses.add(response);
+            }
+            return responses;
+        }
+        return null;
     }
 
     public Room getRoomById(int id) {

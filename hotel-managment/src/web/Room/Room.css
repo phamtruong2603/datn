@@ -188,11 +188,7 @@
     padding: 0.3rem;
     color: white;
     background-color: rgb(61, 61, 242);
-}
-
-.detail-reservation_information h3 {
-    margin-bottom: 1rem;
-}
+}   
 
 .time_detail-DRI {
     display: flex;
@@ -211,7 +207,7 @@
 
 .line-sevice-nameRI {
     display: block;
-    height: 8rem;
+    height: 6rem;
     width: 1px;
     background-color: rgb(224, 224, 224);
 }
@@ -355,4 +351,19 @@
     margin-top: 2rem;
     display: flex;
     justify-content: center;
+}
+
+.title-detail-reservation_information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.title-detail-reservation_information span{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    font-style: italic;
+
 }

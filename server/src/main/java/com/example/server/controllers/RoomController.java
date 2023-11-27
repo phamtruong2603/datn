@@ -59,7 +59,6 @@ public class RoomController {
     }
 
     @GetMapping("/get-all-room-by-hotel")
-
     public ResponseEntity<Response> getRoomByHotel(@RequestParam int hotel_id) {
         System.out.println(hotel_id);
         Object rooms = roomService.getRoomByHotel(hotel_id);
@@ -67,7 +66,7 @@ public class RoomController {
         String status = "200";
         System.out.println(rooms);
         return ResponseEntity.status(HttpStatus.OK).body(
-                new Response(status, message, 1001, "")
+                new Response(status, message, 1001, rooms)
         );
     }
 

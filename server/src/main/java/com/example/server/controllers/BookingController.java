@@ -38,4 +38,16 @@ public class BookingController {
                 new Response(status, message, 1000, saveBooking)
         );
     }
+
+    @GetMapping("get-all")
+    public ResponseEntity<Response> getAllBooking(@RequestParam int room_id) {
+
+        Object saveBooking = bookingService.getAllBooking(room_id);
+        String status = "200";
+        String message = "success";
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                new Response(status, message, 1000, saveBooking)
+        );
+    }
 }

@@ -27,6 +27,7 @@ const Introduce: React.FC<Room> = ({
           max_user,
           description,
           img,
+          name
         }
       })
   };
@@ -63,8 +64,8 @@ const Introduce: React.FC<Room> = ({
 
         <div className='bottom-evaluate-Introduce'>
           <span>1 đêm, 2 người lớn</span>
-          <span>VND 810.000 </span>
-          <span>VND 567.000</span>
+          <span>VND {price}</span>
+          <span>VND {price/100*70}</span>
           <div className='discount-BEI'><span>Tiết kiệm 30%</span></div>
           <p>Đã bao gồm thuế và phí</p>
         </div>
