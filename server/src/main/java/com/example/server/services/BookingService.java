@@ -115,7 +115,13 @@ public class BookingService {
         return null;
     }
 
-    public Object getBookingByEmail() {
+    public Object getBookingByEmail(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+
+        if (user.isPresent()) {
+            List<Booking> bookings = bookingRepository.findByUsersContaining(user.get());
+            return bookings;
+        }
         return null;
     }
 

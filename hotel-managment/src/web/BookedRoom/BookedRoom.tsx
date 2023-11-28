@@ -50,7 +50,8 @@ const BookedRoom = () => {
 
     const search = async() => {
         if(email !== null) {
-            // const res = await getBookingByEmail(email)
+            const res = await getBookingByEmail(email)
+            console.log(res)
             setData([])
             setCheck(true)
         } 

@@ -1,20 +1,19 @@
-package com.example.server.dto;
+package com.example.server.responses;
+
 
 import com.example.server.entity.Booking;
 import com.example.server.entity.Hotel;
 import com.example.server.entity.Room;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BillDto {
+public class BillRes {
     private String name;
-    private int hotel_id;
-    private int booking_id;
+    private Room room;
+    private Booking booking;
+    private Hotel hotel;
 }

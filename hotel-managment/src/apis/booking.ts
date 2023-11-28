@@ -55,5 +55,5 @@ export const getBookingByEmail = async (
         email: string
     }
 ) => {
-    return await callApi<IListBooking[]>("booking/get-booking-by-email", "post", data)
+    return await callApi<IListBooking[]>("booking/get-booking-by-email", "get", data)
 }

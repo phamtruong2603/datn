@@ -25,7 +25,20 @@ public class BillController {
         String message = "success";
 
         return ResponseEntity.status(HttpStatus.CREATED).body(
-                new Response(status, message, 1000, "")
+                new Response(status, message, 1000, billSave)
+        );
+    }
+
+    @GetMapping("get-all")
+    public ResponseEntity<Response> getAllBill() {
+
+        Object bills = billService.getAll();
+
+        String status = "200";
+        String message = "success";
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                new Response(status, message, 1000, bills)
         );
     }
 }

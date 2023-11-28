@@ -81,6 +81,15 @@ public class RoomService {
     }
 
     public Object findRoomsByPartialName(FindRoomDto data) {
-        return null;
+        List<Room> rooms;
+        if (data.getCategory() == null) {
+            rooms = roomRepository.findByName(data.getName());
+        }
+        else if (data.getName() == null) {
+            rooms = roomRepository.findByCategory(data.getCategory());
+        }else  {
+            rooms = roomRepository.findByCategoryAndName(data.getCategory(), data.getName());
+        }
+        return rooms;
     }
 }

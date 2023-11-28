@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './Room.css';
 import { Button, Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
@@ -6,10 +6,11 @@ import { getAllRoom, searchRoom } from '../../apis/room';
 
 import Introduce from './Introduce';
 import { Room as typeRoom } from '../../types/room';
+import { MessageContextProvider } from '../../contexts/MessageContext';
 
 interface IData {
-  name?: string 
-  category?: string 
+  name?: string
+  category?: string
 }
 
 
@@ -17,6 +18,9 @@ const Room = () => {
 
   const [data, setData] = useState<IData>({})
 
+  const mess = useContext(MessageContextProvider);
+  const success = mess?.success
+  const error = mess?.error
 
   const [rooms, setRoom] = useState<typeRoom[]>()
 
@@ -28,10 +32,13 @@ const Room = () => {
   }
 
   const onclick = async () => {
-    console.log(data)
     const res = await searchRoom(data)
-    if(res?.data) {
+    if (res?.data.length) {
       setRoom(res?.data)
+      success("Phòng của bạn đã được tìm thấy")
+    }
+    else {
+      error("Không tìm thấy phòng theo yêu cầu")
     }
   }
 

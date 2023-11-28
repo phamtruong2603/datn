@@ -68,7 +68,7 @@ public class BookingController {
     @GetMapping("get-booking-by-email")
     public ResponseEntity<Response> getBookingByEmail(@RequestParam String email) {
 
-        Object saveBooking = bookingService.getBookingByEmail();
+        Object saveBooking = bookingService.getBookingByEmail(email);
         String status = "200";
         String message = "success";
 

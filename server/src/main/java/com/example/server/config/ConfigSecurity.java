@@ -64,12 +64,13 @@ public class ConfigSecurity {
                         "/api/v1/room/search-room",
                         "/api/v1/booking/delete-booking",
                         "/api/v1/booking/create-booking",
-                        "/api/v1/booking/get-all"
+                        "/api/v1/booking/get-booking-by-email"
                 ).permitAll()
                 .antMatchers(
                         "/api/v1/hotel/create-hotel",
                         "/api/v1/hotel/get-all-hotel",
-                        "/api/v1/user/get-all"
+                        "/api/v1/user/get-all",
+                        "/api/v1/bill/get-all"
                 ).hasAuthority("admin")
                 .anyRequest().authenticated();
         http.authenticationProvider(authenticationProvider());
