@@ -17,11 +17,6 @@ export const listSidebarStaff: MenuItem[] = [
         url: "bill-confirmation",
     },
     {
-        titleSidebar: "Lịch sử",
-        key: "history",
-        url: "history",
-    },
-    {
         titleSidebar: "Quản lý phòng khách sạn",
         key: "room-management",
         url: "room-management",

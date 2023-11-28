@@ -1,17 +1,24 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAllUser } from "../../apis/auth";
+import { User } from "../../types/user";
+import TableClientManagement from "../../components/Table/TableClientManagement";
 
 const ClientManagement = () => {
+
+  const [data, setData] = useState<User[] | undefined>();
 
     useEffect(() => {
         (async() => {
             const res = await getAllUser();
-            console.log(res)
+            setData(res?.data)
         })()
     }, [])
 
   return (
-    <div>ClientManagement</div>
+    <div>
+      <div  className="title-layout">Quản lý khách hàng</div>
+      <TableClientManagement dataSource={data} />
+    </div>
   )
 }
 

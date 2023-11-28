@@ -9,7 +9,7 @@ const Navbar = () => {
         <Link to={"/"}>Khách sạn</Link>
         <Link to={"/rooms"}>Phòng thuê</Link>
         <Link to={"/attractions"}>Địa điểm tham quan</Link>
-        <Link to={"/"}>Thuê xe</Link>
+        <Link to={"/booked-room"}>Đã xác nhận</Link>
         <Link to={"/about"}>Thông tin</Link>
       </nav>
     </div>

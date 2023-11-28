@@ -1,5 +1,6 @@
 package com.example.server.services;
 
+import com.example.server.dto.BookingDeleteDto;
 import com.example.server.dto.BookingDto;
 import com.example.server.dto.RegisterDto;
 import com.example.server.entity.Booking;
@@ -14,9 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -62,6 +61,8 @@ public class BookingService {
                 booking.setCount_user(req.getCount_user());
                 booking.setStatus(req.isStatus());
                 booking.setRoom(room.get());
+                booking.setIdDelete(req.isIdDelete());
+                booking.setVerification(req.getVerification());
                 if (user.isPresent()) {
                     booking.setUsers(Arrays.asList(user.get()));
                     return bookingRepository.save(booking);
@@ -88,19 +89,53 @@ public class BookingService {
         Optional<Booking> findBooking = bookingRepository.findById(id);
 
         if (findBooking.isPresent()) {
+
+            String verification = RandomStringExample();
             Booking booking = findBooking.get();
             booking.setStatus(true);
-            System.out.println(booking.getUsers().get(0).getEmail());
-            emailSenderService.sendEmail(booking.getUsers().get(0).getEmail());
-            return bookingRepository.save(booking);
+            booking.setVerification(verification);
+
+            Booking fountBooking = bookingRepository.save(booking);
+            emailSenderService.sendEmail(booking.getUsers().get(0).getEmail(), verification);
+            return fountBooking;
         }
 
         return null;
     }
 
-    public Object getAllBooking(int room_id) {
-        List<Booking> bookings = bookingRepository.findByRoom_id(room_id);
+    public Object deleteBooking(BookingDeleteDto data) {
+        Optional<Booking> findBooking = bookingRepository.findById(data.getId());
+        if (findBooking.isPresent()) {
+            Booking booking = findBooking.get();
+            if (Objects.equals(booking.getVerification(), data.getVerification())) {
+                booking.setIdDelete(true);
+                return bookingRepository.save(booking);
+            }
+        }
+        return null;
+    }
+
+    public Object getBookingByEmail() {
+        return null;
+    }
+
+    public Object getAllBooking() {
+        List<Booking> bookings = bookingRepository.findAll();
         return bookings;
     }
+
+    private String RandomStringExample() {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        int length = 5;
+
+        Random random = new Random();
+        StringBuilder randomString = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            char randomChar = characters.charAt(random.nextInt(characters.length()));
+            randomString.append(randomChar);
+        }
+        return randomString.toString();
+    };
 
 }

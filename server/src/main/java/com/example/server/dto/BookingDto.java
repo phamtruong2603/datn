@@ -18,6 +18,8 @@ public class BookingDto {
     private String discount;
     private String received_date;
     private String pay_day;
+    private boolean idDelete;
+    private String verification;
     private int count_user;
     private boolean status;
     private int room_id;

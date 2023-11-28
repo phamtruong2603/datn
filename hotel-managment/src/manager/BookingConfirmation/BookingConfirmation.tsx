@@ -1,36 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import TableBookingConfirmation from '../../components/Table/TableBookingConfirmation';
-import { Booking } from '../../types/booking';
-
-const data: Booking[] = [
-    {
-      id: 1,
-      name: "Booking Phòng 1",
-      count_user: 3,
-      rental_period: "2023-11-10",
-      status: true
-    },
-    {
-      id: 2,
-      name: "Booking Phòng 1",
-      count_user: 3,
-      room_id: 1,
-      rental_period: "2023-11-10",
-      status: false
-    },
-    {
-      id: 3,
-      name: "Booking Phòng 2",
-      count_user: 2,
-      room_id: 2,
-      rental_period: "2023-11-10",
-      status: null
-    },
-  ]
+import { getAllBooking } from '../../apis/booking';
+import { User } from '../../types/user';
+export interface IListBooking {
+  id: Number,
+  name: string,
+  count_user?: Number
+  description?: string
+  rental_period?: string
+  status?: Boolean | null
+  room_id?: number
+  verification?: string
+  discount?: string,
+  received_date?: string,
+  pay_day?: string,
+  idDelete?: boolean,
+  users: User[]
+}
 
 const BookingConfirmation = () => {
+
+  const [bookings, setBookings] = useState<IListBooking[]>([])
+
+  useEffect(() => {
+    (async () => {
+      const res = await getAllBooking();
+      if (res?.data) {
+        setBookings([
+          ...res.data
+        ])
+      }
+    })()
+  }, [])
+
   return (
-    <TableBookingConfirmation dataSource={data}/>
+    <div>
+      <div className="title-layout">Xác nhận Đặt phòng</div>
+      <TableBookingConfirmation dataSource={bookings} />
+    </div>
   )
 }
 

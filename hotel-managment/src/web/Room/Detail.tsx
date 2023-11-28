@@ -115,6 +115,7 @@ const Detail = () => {
             const pay_day = new Date(data.pay_day);
             return differenceInDays(pay_day, received_date);
         }
+        return 1
     }
 
 
@@ -213,8 +214,8 @@ const Detail = () => {
                     <div className='sum_price-PRI'>
                         <span>Tổng cộng</span>
                         <div>
-                            <span>VND {sumTime() !== undefined ? state.price : 'state.price'}</span>
-                            <span>VND {state.price / 100 * 70}</span>
+                            <span>VND {state.price * sumTime()}</span>
+                            <span>VND {state.price * sumTime() / 100 * 70}</span>
                             <span>Đã bao gồm thuế và phí</span>
                         </div>
                     </div>
@@ -256,16 +257,29 @@ const Detail = () => {
                             />
                         </div>
                     </div>
-                    <div className='email'>
-                        <label htmlFor="email">Địa chỉ email</label>
-                        <input
-                            type="text"
-                            id='email'
-                            name='email'
-                            onChange={changPrames}
-                            value={userReq.email || undefined}
-                            placeholder='email@gmail.com'
-                        />
+                    <div className='name'>
+                        <div className='email'>
+                            <label htmlFor="email">Địa chỉ email</label>
+                            <input
+                                type="text"
+                                id='email'
+                                name='email'
+                                onChange={changPrames}
+                                value={userReq.email || undefined}
+                                placeholder='email@gmail.com'
+                            />
+                        </div>
+                        <div className='cmnd'>
+                            <label htmlFor="cmnd">CMND</label>
+                            <input
+                                type="text"
+                                id='cmnd'
+                                name='cmnd'
+                                onChange={changPrames}
+                                value={userReq.cmnd || undefined}
+                                placeholder=''
+                            />
+                        </div>
                     </div>
                     <div className='address'>
                         <label htmlFor="address">Vùng/quốc gia</label>

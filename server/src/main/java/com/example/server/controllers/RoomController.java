@@ -1,12 +1,11 @@
 package com.example.server.controllers;
 
+import com.example.server.dto.FindRoomDto;
 import com.example.server.dto.RoomRequestCreate;
-import com.example.server.entity.Hotel;
 import com.example.server.entity.Room;
 import com.example.server.responses.Response;
 import com.example.server.services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -74,6 +73,26 @@ public class RoomController {
     public ResponseEntity<Response> getRoomById(@PathVariable Integer id) {
         try {
             Room room = roomService.getRoomById(id);
+            if (room == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                        new Response("404", "not found", 1001, "")
+                );
+            }
+            return ResponseEntity.status(HttpStatus.OK).body(
+                    new Response("201", "success", 1000, room)
+            );
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                    new Response("500", "fail", 1001, "")
+            );
+        }
+    }
+
+    @PostMapping("/search-room")
+    public ResponseEntity<Response> findRoomsByPartialName(@RequestBody FindRoomDto data) {
+        System.out.println(data);
+        try {
+            Object room = roomService.findRoomsByPartialName(data);
             if (room == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
                         new Response("404", "not found", 1001, "")

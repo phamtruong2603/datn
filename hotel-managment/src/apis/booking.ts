@@ -1,5 +1,6 @@
 import { Booking } from "../types/booking"
 import { callApi } from "./callAPI"
+import { IListBooking } from "../manager/BookingConfirmation/BookingConfirmation"
 
 export const createBooking = async (
     data: {
@@ -35,4 +36,24 @@ export const getBookingById = async (
     }
 ) => {
     return await callApi<Booking[]>("booking/get-booking-by-id", "post", data)
+}
+
+export const getAllBooking = async () => {
+    return await callApi<IListBooking[]>("booking/get-all", "get")
+}
+
+export const confirmBooking = async (
+    data: {
+        id: number
+    }
+) => {
+    return await callApi<IListBooking[]>("booking/confirm-booking", "get", data)
+}
+
+export const getBookingByEmail = async (
+    data: {
+        email: string
+    }
+) => {
+    return await callApi<IListBooking[]>("booking/get-booking-by-email", "post", data)
 }

@@ -10,13 +10,14 @@ public class EmailSenderService {
     @Autowired
     private JavaMailSenderImpl sender;
 
-    public void sendEmail(String email) {
+    public void sendEmail(String email, String verification) {
         //send email
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
         message.setSubject("Welcome to our system!");
         message.setText("Bạn đã đặt phòng thành công: \n" +
-                "Email: " + email);
+                "Email: " + email + "\n" +
+                "Với mã xác nhận là" + verification);
         sender.send(message);
     }
 }

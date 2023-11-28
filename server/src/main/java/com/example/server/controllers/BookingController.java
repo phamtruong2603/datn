@@ -1,5 +1,6 @@
 package com.example.server.controllers;
 
+import com.example.server.dto.BookingDeleteDto;
 import com.example.server.dto.BookingDto;
 import com.example.server.responses.Response;
 import com.example.server.services.BookingService;
@@ -29,7 +30,7 @@ public class BookingController {
 
     @GetMapping("confirm-booking")
     public ResponseEntity<Response> confirmBooking(@RequestParam int id) {
-
+        System.out.println(id);
         Object saveBooking = bookingService.confirmBooking(id);
         String status = "200";
         String message = "success";
@@ -39,10 +40,35 @@ public class BookingController {
         );
     }
 
-    @GetMapping("get-all")
-    public ResponseEntity<Response> getAllBooking(@RequestParam int room_id) {
+    @PostMapping("delete-booking")
+    public ResponseEntity<Response> deleteBooking(@RequestBody BookingDeleteDto data) {
 
-        Object saveBooking = bookingService.getAllBooking(room_id);
+        System.out.println(data);
+        Object saveBooking = bookingService.deleteBooking(data);
+        String status = "200";
+        String message = "success";
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                new Response(status, message, 1000, saveBooking)
+        );
+    }
+
+    @GetMapping("get-all")
+    public ResponseEntity<Response> getAllBooking() {
+
+        Object saveBooking = bookingService.getAllBooking();
+        String status = "200";
+        String message = "success";
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                new Response(status, message, 1000, saveBooking)
+        );
+    }
+
+    @GetMapping("get-booking-by-email")
+    public ResponseEntity<Response> getBookingByEmail(@RequestParam String email) {
+
+        Object saveBooking = bookingService.getBookingByEmail();
         String status = "200";
         String message = "success";
 

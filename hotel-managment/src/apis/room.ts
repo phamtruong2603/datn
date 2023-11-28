@@ -25,3 +25,12 @@ export const getRoomByHotelId = async (
 ) => {
     return await callApi<Room[]>("room/get-all", 'get', data)
 }
+
+export const searchRoom = async (
+    data: {
+        name?: string 
+        category?: string
+    }
+) => {
+    return await callApi<Room[]>("room/search-room", 'post', data)
+}

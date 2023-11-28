@@ -15,4 +15,6 @@ public interface RoomRepository extends JpaRepository<Room, Integer> {
     List<Room> findRoomsByHotelId(int hotelId);
 
     List<Room> findRoomsByHotel(Hotel h);
+
+    Object findByNameLike(String nameWithWildcard);
 }

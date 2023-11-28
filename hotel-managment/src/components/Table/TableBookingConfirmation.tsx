@@ -1,33 +1,44 @@
 import React from 'react';
 import { Button, Space, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { Booking } from '../../types/booking';
 import { useNavigate } from 'react-router-dom';
+import { IListBooking } from '../../manager/BookingConfirmation/BookingConfirmation';
 
 interface ITableBookingConfirmation {
-    dataSource: Booking[]
+    dataSource: IListBooking[]
 }
 
 const TableBookingConfirmation: React.FC<ITableBookingConfirmation> = ({ dataSource }) => {
 
+    console.log(dataSource)
+
     const navigate = useNavigate();
 
-    const navigateBookingDetail = (record: Booking) => {
-        navigate(`/admin/booking-confirmation/${record.id}`)
+    const navigateBookingDetail = (record: IListBooking) => {
+        navigate(
+            `/admin/booking-confirmation/${record.id}`, 
+            {state : {record}}
+        )
     }
 
-    const columns: ColumnsType<Booking> = [
-        {
-            title: 'Mã Booking',
-            dataIndex: 'id',
-            key: 'id',
-            align: 'center',
-            className: ''
-        },
+    const columns: ColumnsType<IListBooking> = [
         {
             title: 'Tên',
             dataIndex: 'name',
             key: 'name',
+            align: 'center',
+            className: ''
+        },
+        {
+            title: 'Email người thuê',
+            dataIndex: 'email',
+            key: 'email',
+            render: (_, record) => {
+                console.log(record.users[0].email)
+                return(
+                    <>{record.users[0].email}</>
+                )
+            },
             align: 'center',
             className: ''
         },
@@ -39,27 +50,13 @@ const TableBookingConfirmation: React.FC<ITableBookingConfirmation> = ({ dataSou
             className: ''
         },
         {
-            title: 'Phòng thuê',
-            dataIndex: 'room_id',
-            key: 'room_id',
-            align: 'center',
-            className: ''
-        },
-        {
-            title: 'Giá',
-            dataIndex: 'price',
-            key: 'price',
-            align: 'center',
-            className: ''
-        },
-        {
             title: 'Trạng Thái',
             dataIndex: 'status',
             key: 'status',
             render: (_, record) => {
                 return (
                     <Space size={"large"}>
-                        {record.status == null ?
+                        {record.idDelete ?
                             <Tag bordered={false} color="red">Đã hủy</Tag> :
                             record.status ?
                                 <Tag bordered={false} color="green">Đã hoàn thành</Tag> :
@@ -73,8 +70,8 @@ const TableBookingConfirmation: React.FC<ITableBookingConfirmation> = ({ dataSou
         },
         {
             title: 'Ngày thuê',
-            dataIndex: 'date',
-            key: 'date',
+            dataIndex: 'received_date',
+            key: 'received_date',
             align: 'center',
             className: ''
         },
@@ -85,7 +82,7 @@ const TableBookingConfirmation: React.FC<ITableBookingConfirmation> = ({ dataSou
             render: (_, record) => {
                 return (
                     <>
-                        {record.status === null ?
+                        {record.idDelete ?
                             <Button type="link" danger onClick={() => navigateBookingDetail(record)}  ><Tag bordered={false} color="red">{`Xem -->`}</Tag></Button>
                             : record.status ? "" :
                                 <Button type="link" ghost onClick={() => navigateBookingDetail(record)}  ><Tag bordered={false} color="yellow">{`Xác thực -->`}</Tag></Button>
@@ -94,7 +91,8 @@ const TableBookingConfirmation: React.FC<ITableBookingConfirmation> = ({ dataSou
                 )
             },
             align: 'center',
-            className: ''
+            className: '',
+            // width: 
         }
     ];
 

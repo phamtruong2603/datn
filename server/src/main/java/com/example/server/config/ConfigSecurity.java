@@ -32,7 +32,7 @@ public class ConfigSecurity {
 
     @Bean
     public JwtAuthTokenFilter jwtAuthTokenFilter() {
-        return  new JwtAuthTokenFilter();
+        return new JwtAuthTokenFilter();
     }
 
     @Bean
@@ -41,7 +41,7 @@ public class ConfigSecurity {
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(customUserService);
         authProvider.setPasswordEncoder(passwordEncoder());
@@ -49,18 +49,22 @@ public class ConfigSecurity {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.cors(Customizer.withDefaults()).csrf(csrf -> csrf.disable())
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests()
                 .antMatchers(
                         "/api/v1/auth/**",
-                        "/api/v1/room/get-all"
+                        "/api/v1/room/get-all",
+                        "/api/v1/room/search-room",
+                        "/api/v1/booking/delete-booking",
+                        "/api/v1/booking/create-booking",
+                        "/api/v1/booking/get-all"
                 ).permitAll()
                 .antMatchers(
                         "/api/v1/hotel/create-hotel",

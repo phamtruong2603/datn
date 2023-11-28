@@ -1,5 +1,6 @@
 package com.example.server.services;
 
+import com.example.server.dto.FindRoomDto;
 import com.example.server.dto.RoomRequestCreate;
 import com.example.server.entity.Hotel;
 import com.example.server.entity.Room;
@@ -77,5 +78,9 @@ public class RoomService {
             return null;
         }
         return room.get();
+    }
+
+    public Object findRoomsByPartialName(FindRoomDto data) {
+        return null;
     }
 }

@@ -41,13 +41,18 @@ public class Booking {
     @Column(name = "status")
     private boolean status;
 
+    @Column(name = "idDelete")
+    private boolean idDelete;
+
+    @Column(name = "verification")
+    private String verification;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "room_id")
     @JsonIgnore
     private Room room;
 
     @ManyToMany
-    @JsonIgnore
     @JoinTable(
             name = "booking_user",
             joinColumns = @JoinColumn(name = "booking_id"),

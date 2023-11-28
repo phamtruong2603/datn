@@ -1,17 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import './Room.css';
-import { Button, DatePicker, Input } from 'antd';
+import { Button, Input } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { getAllRoom } from '../../apis/room';
+import { getAllRoom, searchRoom } from '../../apis/room';
 
 import Introduce from './Introduce';
 import { Room as typeRoom } from '../../types/room';
 
-const { RangePicker } = DatePicker;
+interface IData {
+  name?: string 
+  category?: string 
+}
+
 
 const Room = () => {
 
+  const [data, setData] = useState<IData>({})
+
+
   const [rooms, setRoom] = useState<typeRoom[]>()
+
+  const changePrames = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const onclick = async () => {
+    console.log(data)
+    const res = await searchRoom(data)
+    if(res?.data) {
+      setRoom(res?.data)
+    }
+  }
 
   useEffect(() => {
     (async () => {
@@ -31,19 +53,26 @@ const Room = () => {
           <Button>{`Xem phòng -->`}</Button>
 
           <div className='search'>
-            <Input className='input-search' placeholder="Bạn muốn ở đâu???" prefix={<UserOutlined />} />
-            <RangePicker className='input-search' />
-            <Input className='input-search' placeholder="large size" prefix={<UserOutlined />} />
-            <Button className='button-search' type="primary">Tìm</Button>
+            <Input
+              onChange={changePrames}
+              name='name'
+              className='input-search'
+              placeholder="Nhập tên phòng..."
+              prefix={<UserOutlined />}
+            />
+            <Input
+              onChange={changePrames}
+              name='category'
+              className='input-search'
+              placeholder="Loại phòng mong muốn..."
+              prefix={<UserOutlined />}
+            />
+            <Button className='button-search' type="primary" onClick={onclick}>Tìm</Button>
           </div>
         </div>
       </header>
 
       <div className='content_room content-web'>
-        <div className='sidebar-content_room'>
-          Lua chon
-        </div>
-
         <div className='list-content_room'>
           {
             rooms && rooms.map((room) => {

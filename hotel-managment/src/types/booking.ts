@@ -5,6 +5,9 @@ export interface Booking {
     description?: string
     rental_period?: string
     status?: Boolean | null
-    hotel_id?: number
     room_id?: number
+    verification?: string
+    discount?: string,
+    received_date?: string,
+    pay_day?: string,
 }

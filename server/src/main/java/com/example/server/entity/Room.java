@@ -34,6 +34,9 @@ public class Room {
     @Column(name = "max_user")
     private  int max_user;
 
+    @Column(name = "category")
+    private  String category;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hotel_id")
     @JsonIgnore

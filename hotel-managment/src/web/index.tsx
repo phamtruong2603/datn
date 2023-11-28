@@ -8,6 +8,7 @@ import Home from './Home';
 import Attractions from './Attractions/Attractions';
 import Room from './Room/Room';
 import Detail from './Room/Detail';
+import BookedRoom from './BookedRoom/BookedRoom';
 import Footer from '../components/Footer/Footer';
 import NavigateNotFound from '../components/NotFound/NavigateNotFound';
 
@@ -18,9 +19,14 @@ const Web = () => {
       <Navbar />
       <Routes>
         <Route path="" element={<Home />} />
-        <Route path="/attractions" element={<Attractions />} />
+
         <Route path="/rooms" element={<Room />} />
         <Route path="/rooms/:id" element={<Detail />} />
+
+        <Route path="/attractions" element={<Attractions />} />
+
+        <Route path="/booked-room" element={<BookedRoom />} />
+
         <Route path="/*" element={<NavigateNotFound />} />
       </Routes>
       <OnTop />
